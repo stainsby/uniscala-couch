@@ -1,0 +1,565 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>CouchSimpleDoc - net.uniscala.couch.CouchSimpleDoc</title>
+          <meta name="description" content="CouchSimpleDoc - net.uniscala.couch.CouchSimpleDoc" />
+          <meta name="keywords" content="CouchSimpleDoc net.uniscala.couch.CouchSimpleDoc" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'net.uniscala.couch.CouchSimpleDoc';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img src="../../../lib/class_big.png" />
+        <p id="owner"><a href="../../package.html" class="extype" name="net">net</a>.<a href="../package.html" class="extype" name="net.uniscala">uniscala</a>.<a href="package.html" class="extype" name="net.uniscala.couch">couch</a></p>
+        <h1>CouchSimpleDoc</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">CouchSimpleDoc</span><span class="result"> extends <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span> with <a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a>[<a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A simplified couch document that has a smaller set of API operation
+for a normal couch document. Example: local docs, which don't have
+attachments.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a>[<a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a>], <a href="CouchPathOpsBase.html" class="extype" name="net.uniscala.couch.CouchPathOpsBase">CouchPathOpsBase</a>[<a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a>], <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span>, <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a>, <a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="net.uniscala.couch.CouchSimpleDoc"><span>CouchSimpleDoc</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="net.uniscala.couch.CouchPathSimpleOps"><span>CouchPathSimpleOps</span></li><li class="in" name="net.uniscala.couch.CouchPathOpsBase"><span>CouchPathOpsBase</span></li><li class="in" name="net.uniscala.couch.CouchDocBase"><span>CouchDocBase</span></li><li class="in" name="net.uniscala.couch.CouchSubPath"><span>CouchSubPath</span></li><li class="in" name="net.uniscala.couch.CouchPath"><span>CouchPath</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchDocBase#baseUrl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="baseUrl:net.uniscala.couch.util.Url"></a>
+      <a id="baseUrl:Url"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">baseUrl</span><span class="result">: <a href="util/Url.html" class="extype" name="net.uniscala.couch.util.Url">Url</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CouchDocBase → <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a> → <a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a></dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchSubPath#client" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="client:net.uniscala.couch.CouchClient"></a>
+      <a id="client:CouchClient"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">client</span><span class="result">: <a href="CouchClient.html" class="extype" name="net.uniscala.couch.CouchClient">CouchClient</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a> → <a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a></dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchPathSimpleOps#copy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="copy(targetPath:List[String],targetRevOpt:Option[String]):scala.concurrent.Future[net.uniscala.couch.CouchDoc.Rev]"></a>
+      <a id="copy(List[String],Option[String]):Future[Rev]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">copy</span><span class="params">(<span name="targetPath">targetPath: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="targetRevOpt">targetRevOpt: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="CouchDoc$$Rev.html" class="extype" name="net.uniscala.couch.CouchDoc.Rev">Rev</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">API METHOD: copies this document (using couch's non-standard
+HTTP COPY mechanism).</p><div class="fullcomment"><div class="comment cmt"><p>API METHOD: copies this document (using couch's non-standard
+HTTP COPY mechanism).
+The target should be a list of URL segments that will be
+encoded into the 'Location' header.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a></dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchPathSimpleOps#delete" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="delete():scala.concurrent.Future[net.uniscala.couch.CouchDoc.Rev]"></a>
+      <a id="delete():Future[Rev]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">delete</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="CouchDoc$$Rev.html" class="extype" name="net.uniscala.couch.CouchDoc.Rev">Rev</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">API METHOD: deletes this document (using HTTP DELETE).</p><div class="fullcomment"><div class="comment cmt"><p>API METHOD: deletes this document (using HTTP DELETE).
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a></dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchSimpleDoc#id" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="id:String"></a>
+      <a id="id:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">id</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a> → <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchSimpleDoc#jdoc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jdoc:net.uniscala.json.JsonObject"></a>
+      <a id="jdoc:JsonObject"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jdoc</span><span class="result">: <span class="extype" name="net.uniscala.json.JsonObject">JsonObject</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The document as JSON.</p><div class="fullcomment"><div class="comment cmt"><p>The document as JSON.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a> → CouchDocBase</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchSimpleDoc#newDoc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="newDoc(id:String,rev:String,jdoc:net.uniscala.json.JsonObject):net.uniscala.couch.CouchSimpleDoc"></a>
+      <a id="newDoc(String,String,JsonObject):CouchSimpleDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newDoc</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="rev">rev: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="jdoc">jdoc: <span class="extype" name="net.uniscala.json.JsonObject">JsonObject</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Instantiates a new document.</p><div class="fullcomment"><div class="comment cmt"><p>Instantiates a new document. Concrete implmentors should return
+an instance appropriate for this path.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a> → <a href="CouchPathOpsBase.html" class="extype" name="net.uniscala.couch.CouchPathOpsBase">CouchPathOpsBase</a></dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchSimpleDoc#parent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parent:net.uniscala.couch.CouchPath"></a>
+      <a id="parent:CouchPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parent</span><span class="result">: <a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a> → <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchSubPath#parentOption" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parentOption:Some[net.uniscala.couch.CouchPath]"></a>
+      <a id="parentOption:Some[CouchPath]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parentOption</span><span class="result">: <span class="extype" name="scala.Some">Some</span>[<a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The parent path of this path.</p><div class="fullcomment"><div class="comment cmt"><p>The parent path of this path. The root path (&quot;/&quot;), which is a CouchClient,
+has no parent (so this will be None).</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a> → <a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a></dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchPathSimpleOps#ref" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ref:net.uniscala.couch.CouchDoc.Rev"></a>
+      <a id="ref:Rev"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ref</span><span class="result">: <a href="CouchDoc$$Rev.html" class="extype" name="net.uniscala.couch.CouchDoc.Rev">Rev</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A reference to this resource.</p><div class="fullcomment"><div class="comment cmt"><p>A reference to this resource.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a></dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchSimpleDoc#rev" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="rev:String"></a>
+      <a id="rev:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rev</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The document revision.</p><div class="fullcomment"><div class="comment cmt"><p>The document revision.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a> → <a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a> → CouchDocBase</dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchPathSimpleOps#update" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="update(newJdoc:net.uniscala.json.JsonObject,batch:Boolean):scala.concurrent.Future[C]"></a>
+      <a id="update(JsonObject,Boolean):Future[CouchSimpleDoc]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">update</span><span class="params">(<span name="newJdoc">newJdoc: <span class="extype" name="net.uniscala.json.JsonObject">JsonObject</span></span>, <span name="batch">batch: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">API METHOD: updates this document (using HTTP PUT).</p><div class="fullcomment"><div class="comment cmt"><p>API METHOD: updates this document (using HTTP PUT).
+Make 'batch' true to use &quot;batch=ok&quot; in the request.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a></dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="net.uniscala.couch.CouchPathSimpleOps">
+              <h3>Inherited from <a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a>[<a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a>]</h3>
+            </div><div class="parent" name="net.uniscala.couch.CouchPathOpsBase">
+              <h3>Inherited from <a href="CouchPathOpsBase.html" class="extype" name="net.uniscala.couch.CouchPathOpsBase">CouchPathOpsBase</a>[<a href="" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a>]</h3>
+            </div><div class="parent" name="net.uniscala.couch.CouchDocBase">
+              <h3>Inherited from <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span></h3>
+            </div><div class="parent" name="net.uniscala.couch.CouchSubPath">
+              <h3>Inherited from <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></h3>
+            </div><div class="parent" name="net.uniscala.couch.CouchPath">
+              <h3>Inherited from <a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

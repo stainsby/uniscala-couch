@@ -1,0 +1,1074 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>CouchViewOptions - net.uniscala.couch.CouchViewOptions</title>
+          <meta name="description" content="CouchViewOptions - net.uniscala.couch.CouchViewOptions" />
+          <meta name="keywords" content="CouchViewOptions net.uniscala.couch.CouchViewOptions" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'net.uniscala.couch.CouchViewOptions';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <a href="CouchViewOptions$.html" title="Go to companion"><img src="../../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../../package.html" class="extype" name="net">net</a>.<a href="../package.html" class="extype" name="net.uniscala">uniscala</a>.<a href="package.html" class="extype" name="net.uniscala.couch">couch</a></p>
+        <h1><a href="CouchViewOptions$.html" title="Go to companion">CouchViewOptions</a></h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">CouchViewOptions</span><span class="params">(<span name="keyOption">keyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="keysOption">keysOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonArray">JsonArray</span>] = <span class="symbol">scala.None</span></span>, <span name="startKeyOption">startKeyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="startKeyDocIdOption">startKeyDocIdOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="endKeyOption">endKeyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="endKeyDocIdOption">endKeyDocIdOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="limitOption">limitOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="staleOption">staleOption: <span class="extype" name="scala.Option">Option</span>[<a href="CouchViewOptions$$Stale.html" class="extype" name="net.uniscala.couch.CouchViewOptions.Stale">Stale</a>] = <span class="symbol">scala.None</span></span>, <span name="descendingOption">descendingOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="skipOption">skipOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">scala.None</span></span>, <span name="groupOption">groupOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="groupLevelOption">groupLevelOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="reduceOption">reduceOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="includeDocsOption">includeDocsOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="inclusiveEndOption">inclusiveEndOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="updateSeqOption">updateSeqOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A set of options used for view requests.
+The default set of options is the same as the defaults in the specification.</p><p>Different options may be obtained by chaining the
+methods named after the corresponding option in the specification,
+like this:
+<pre>
+  val options = CouchViewOptions().limit(100).groupLevel(3)
+</pre>
+An option can also be set back to its default using the similarly
+named methods, but prefixed by 'default':
+<pre>
+  val options2 = options.defaultLimit
+</pre></p><p>See http://wiki.apache.org/couchdb/HTTP_view_API
+for a description of the list of options.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="net.uniscala.couch.CouchViewOptions"><span>CouchViewOptions</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="net.uniscala.couch.CouchViewOptions#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(keyOption:Option[net.uniscala.json.JsonValue[_]],keysOption:Option[net.uniscala.json.JsonArray],startKeyOption:Option[net.uniscala.json.JsonValue[_]],startKeyDocIdOption:Option[String],endKeyOption:Option[net.uniscala.json.JsonValue[_]],endKeyDocIdOption:Option[String],limitOption:Option[Int],staleOption:Option[net.uniscala.couch.CouchViewOptions.Stale],descendingOption:Option[Boolean],skipOption:Option[Long],groupOption:Option[Boolean],groupLevelOption:Option[Int],reduceOption:Option[Boolean],includeDocsOption:Option[Boolean],inclusiveEndOption:Option[Boolean],updateSeqOption:Option[Boolean]):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="&lt;init&gt;:CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">CouchViewOptions</span><span class="params">(<span name="keyOption">keyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="keysOption">keysOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonArray">JsonArray</span>] = <span class="symbol">scala.None</span></span>, <span name="startKeyOption">startKeyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="startKeyDocIdOption">startKeyDocIdOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="endKeyOption">endKeyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="endKeyDocIdOption">endKeyDocIdOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="limitOption">limitOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="staleOption">staleOption: <span class="extype" name="scala.Option">Option</span>[<a href="CouchViewOptions$$Stale.html" class="extype" name="net.uniscala.couch.CouchViewOptions.Stale">Stale</a>] = <span class="symbol">scala.None</span></span>, <span name="descendingOption">descendingOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="skipOption">skipOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">scala.None</span></span>, <span name="groupOption">groupOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="groupLevelOption">groupLevelOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="reduceOption">reduceOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="includeDocsOption">includeDocsOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="inclusiveEndOption">inclusiveEndOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="updateSeqOption">updateSeqOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>)</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultDescending" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultDescending():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultDescending():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultDescending</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultEndKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultEndKey():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultEndKey():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultEndKey</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultEndKeyDocId" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultEndKeyDocId():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultEndKeyDocId():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultEndKeyDocId</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultGroup" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultGroup():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultGroup():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultGroup</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultGroupLevel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultGroupLevel():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultGroupLevel():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultGroupLevel</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultIncludeDocs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultIncludeDocs():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultIncludeDocs():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultIncludeDocs</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultInclusiveEnd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultInclusiveEnd():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultInclusiveEnd():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultInclusiveEnd</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultKey():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultKey():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultKey</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultKeys" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultKeys():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultKeys():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultKeys</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultLimit" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultLimit():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultLimit():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultLimit</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultReduce" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultReduce():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultReduce():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultReduce</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultSkip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultSkip():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultSkip():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultSkip</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultStale" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultStale():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultStale():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultStale</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultStartKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultStartKey():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultStartKey():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultStartKey</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultStartKeyDocId" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultStartKeyDocId():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultStartKeyDocId():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultStartKeyDocId</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#defaultUpdateSeqSeq" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultUpdateSeqSeq():net.uniscala.couch.CouchViewOptions"></a>
+      <a id="defaultUpdateSeqSeq():CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultUpdateSeqSeq</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#descending" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="descending(desc:Boolean):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="descending(Boolean):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">descending</span><span class="params">(<span name="desc">desc: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#descendingOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="descendingOption:Option[Boolean]"></a>
+      <a id="descendingOption:Option[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">descendingOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#endKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="endKey(key:net.uniscala.json.JsonValue[_]):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="endKey(JsonValue[_]):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endKey</span><span class="params">(<span name="key">key: <span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]</span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#endKeyDocId" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="endKeyDocId(id:String):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="endKeyDocId(String):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endKeyDocId</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#endKeyDocIdOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="endKeyDocIdOption:Option[String]"></a>
+      <a id="endKeyDocIdOption:Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endKeyDocIdOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#endKeyOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="endKeyOption:Option[net.uniscala.json.JsonValue[_]]"></a>
+      <a id="endKeyOption:Option[JsonValue[_]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endKeyOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]]</span>
+      </span>
+      </h4>
+      
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchViewOptions#group" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="group(grp:Boolean):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="group(Boolean):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">group</span><span class="params">(<span name="grp">grp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#groupLevel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="groupLevel(lev:Int):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="groupLevel(Int):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">groupLevel</span><span class="params">(<span name="lev">lev: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#groupLevelOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="groupLevelOption:Option[Int]"></a>
+      <a id="groupLevelOption:Option[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">groupLevelOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#groupOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="groupOption:Option[Boolean]"></a>
+      <a id="groupOption:Option[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">groupOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#includeDocs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="includeDocs(incl:Boolean):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="includeDocs(Boolean):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">includeDocs</span><span class="params">(<span name="incl">incl: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#includeDocsOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="includeDocsOption:Option[Boolean]"></a>
+      <a id="includeDocsOption:Option[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">includeDocsOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#inclusiveEnd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="inclusiveEnd(incl:Boolean):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="inclusiveEnd(Boolean):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inclusiveEnd</span><span class="params">(<span name="incl">incl: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#inclusiveEndOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="inclusiveEndOption:Option[Boolean]"></a>
+      <a id="inclusiveEndOption:Option[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inclusiveEndOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchViewOptions#key" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="key(k:net.uniscala.json.JsonValue[_]):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="key(JsonValue[_]):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">key</span><span class="params">(<span name="k">k: <span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]</span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#keyOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="keyOption:Option[net.uniscala.json.JsonValue[_]]"></a>
+      <a id="keyOption:Option[JsonValue[_]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">keyOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#keys" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="keys(ks:net.uniscala.json.JsonArray):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="keys(JsonArray):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">keys</span><span class="params">(<span name="ks">ks: <span class="extype" name="net.uniscala.json.JsonArray">JsonArray</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#keysOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="keysOption:Option[net.uniscala.json.JsonArray]"></a>
+      <a id="keysOption:Option[JsonArray]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">keysOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonArray">JsonArray</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#limit" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="limit(lim:Int):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="limit(Int):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">limit</span><span class="params">(<span name="lim">lim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#limitOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="limitOption:Option[Int]"></a>
+      <a id="limitOption:Option[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">limitOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchViewOptions#reduce" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="reduce(red:Boolean):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="reduce(Boolean):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">reduce</span><span class="params">(<span name="red">red: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#reduceOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="reduceOption:Option[Boolean]"></a>
+      <a id="reduceOption:Option[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">reduceOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#skip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="skip(n:Int):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="skip(Int):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skip</span><span class="params">(<span name="n">n: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#skipOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="skipOption:Option[Long]"></a>
+      <a id="skipOption:Option[Long]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#stale" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="stale(st:net.uniscala.couch.CouchViewOptions.Stale):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="stale(Stale):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stale</span><span class="params">(<span name="st">st: <a href="CouchViewOptions$$Stale.html" class="extype" name="net.uniscala.couch.CouchViewOptions.Stale">Stale</a></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#staleOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="staleOption:Option[net.uniscala.couch.CouchViewOptions.Stale]"></a>
+      <a id="staleOption:Option[Stale]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">staleOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="CouchViewOptions$$Stale.html" class="extype" name="net.uniscala.couch.CouchViewOptions.Stale">Stale</a>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#startKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="startKey(key:net.uniscala.json.JsonValue[_]):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="startKey(JsonValue[_]):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">startKey</span><span class="params">(<span name="key">key: <span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]</span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#startKeyDocId" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="startKeyDocId(id:String):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="startKeyDocId(String):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">startKeyDocId</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#startKeyDocIdOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="startKeyDocIdOption:Option[String]"></a>
+      <a id="startKeyDocIdOption:Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">startKeyDocIdOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#startKeyOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="startKeyOption:Option[net.uniscala.json.JsonValue[_]]"></a>
+      <a id="startKeyOption:Option[JsonValue[_]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">startKeyOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]]</span>
+      </span>
+      </h4>
+      
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="net.uniscala.couch.CouchViewOptions#toList" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="toList:List[(String,String)]"></a>
+      <a id="toList:List[(String,String)]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toList</span><span class="result">: <span class="extype" name="scala.List">List</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#toMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="toMap:Map[String,String]"></a>
+      <a id="toMap:Map[String,String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toMap</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#toUrl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="toUrl(baseUrl:net.uniscala.couch.util.Url):net.uniscala.couch.util.Url"></a>
+      <a id="toUrl(Url):Url"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toUrl</span><span class="params">(<span name="baseUrl">baseUrl: <a href="util/Url.html" class="extype" name="net.uniscala.couch.util.Url">Url</a></span>)</span><span class="result">: <a href="util/Url.html" class="extype" name="net.uniscala.couch.util.Url">Url</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#updateSeq" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="updateSeq(incl:Boolean):net.uniscala.couch.CouchViewOptions"></a>
+      <a id="updateSeq(Boolean):CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateSeq</span><span class="params">(<span name="incl">incl: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="net.uniscala.couch.CouchViewOptions">CouchViewOptions</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions#updateSeqOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="updateSeqOption:Option[Boolean]"></a>
+      <a id="updateSeqOption:Option[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateSeqOption</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

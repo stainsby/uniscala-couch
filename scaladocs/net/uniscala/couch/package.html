@@ -1,0 +1,600 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>couch - net.uniscala.couch</title>
+          <meta name="description" content="couch - net.uniscala.couch" />
+          <meta name="keywords" content="couch net.uniscala.couch" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'net.uniscala.couch.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../lib/package_big.png" />
+        <p id="owner"><a href="../../package.html" class="extype" name="net">net</a>.<a href="../package.html" class="extype" name="net.uniscala">uniscala</a></p>
+        <h1>couch</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">couch</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="net.uniscala.couch.CouchAttachment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchAttachmentextendsObject"></a>
+      <a id="CouchAttachment:CouchAttachment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchAttachment.html"><span class="name">CouchAttachment</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represents an attachment.</p>
+    </li><li name="net.uniscala.couch.CouchChangeOptions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchChangeOptionsextendsProductwithSerializable"></a>
+      <a id="CouchChangeOptions:CouchChangeOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchChangeOptions.html"><span class="name">CouchChangeOptions</span></a><span class="params">(<span name="sinceOption">sinceOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="limitOption">limitOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="descendingOption">descendingOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="heartbeatOption">heartbeatOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.Some.apply[Int](60.*(1000))</span></span>, <span name="timeoutOption">timeoutOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="filterOption">filterOption: <span class="extype" name="scala.Option">Option</span>[<a href="CouchFilter.html" class="extype" name="net.uniscala.couch.CouchFilter">CouchFilter</a>] = <span class="symbol">scala.None</span></span>, <span name="includeDocsOption">includeDocsOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="styleOption">styleOption: <span class="extype" name="scala.Option">Option</span>[<a href="CouchChangeOptions$$Style.html" class="extype" name="net.uniscala.couch.CouchChangeOptions.Style">Style</a>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A set of options used for view requests.</p>
+    </li><li name="net.uniscala.couch.CouchChangePusher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchChangePusherextendsRunnable"></a>
+      <a id="CouchChangePusher:CouchChangePusher"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchChangePusher.html"><span class="name">CouchChangePusher</span></a><span class="result"> extends <span class="extype" name="java.lang.Runnable">Runnable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Pushes changes to the 'withChanges' function as they are read from the
+server's response to a continuous change request.</p>
+    </li><li name="net.uniscala.couch.CouchClient" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchClientextendsClientwithCouchPath"></a>
+      <a id="CouchClient:CouchClient"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchClient.html"><span class="name">CouchClient</span></a><span class="result"> extends <a href="http/Client.html" class="extype" name="net.uniscala.couch.http.Client">Client</a> with <a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An HTTP client for communicating with a couch database, and also a
+'path' for the root URL (see CouchPath).</p>
+    </li><li name="net.uniscala.couch.CouchDatabase" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchDatabaseextendsCouchSubPathwithCouchPathContainerOps[net.uniscala.couch.CouchDoc]"></a>
+      <a id="CouchDatabase:CouchDatabase"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchDatabase.html"><span class="name">CouchDatabase</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a> with <a href="CouchPathContainerOps.html" class="extype" name="net.uniscala.couch.CouchPathContainerOps">CouchPathContainerOps</a>[<a href="CouchDoc.html" class="extype" name="net.uniscala.couch.CouchDoc">CouchDoc</a>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represents a couch database.</p>
+    </li><li name="net.uniscala.couch.CouchDesign" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchDesignextendsCouchSubPath"></a>
+      <a id="CouchDesign:CouchDesign"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchDesign.html"><span class="name">CouchDesign</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchDesigns" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchDesignsextendsCouchSubPathwithCouchPathContainerOps[net.uniscala.couch.CouchDoc]"></a>
+      <a id="CouchDesigns:CouchDesigns"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchDesigns.html"><span class="name">CouchDesigns</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a> with <a href="CouchPathContainerOps.html" class="extype" name="net.uniscala.couch.CouchPathContainerOps">CouchPathContainerOps</a>[<a href="CouchDoc.html" class="extype" name="net.uniscala.couch.CouchDoc">CouchDoc</a>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represents a base for resources found below &quot;/_design/&quot; in a database.</p>
+    </li><li name="net.uniscala.couch.CouchDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchDocextendsCouchDocBasewithCouchPathSimpleOps[net.uniscala.couch.CouchDoc]withCouchPathAttachmentOps[net.uniscala.couch.CouchDoc]withProductwithSerializable"></a>
+      <a id="CouchDoc:CouchDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchDoc.html"><span class="name">CouchDoc</span></a><span class="result"> extends <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span> with <a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a>[<a href="CouchDoc.html" class="extype" name="net.uniscala.couch.CouchDoc">CouchDoc</a>] with <a href="CouchPathAttachmentOps.html" class="extype" name="net.uniscala.couch.CouchPathAttachmentOps">CouchPathAttachmentOps</a>[<a href="CouchDoc.html" class="extype" name="net.uniscala.couch.CouchDoc">CouchDoc</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A couch document.</p>
+    </li><li name="net.uniscala.couch.CouchFailure" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchFailureextendsThrowablewithProductwithSerializable"></a>
+      <a id="CouchFailure:CouchFailure"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchFailure.html"><span class="name">CouchFailure</span></a><span class="params">(<span name="error">error: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="reasonOption">reasonOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <span class="extype" name="java.lang.Throwable">Throwable</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represents a failure that was returned as a JSON object from a couch
+server.</p>
+    </li><li name="net.uniscala.couch.CouchFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchFilterextendsProductwithSerializable"></a>
+      <a id="CouchFilter:CouchFilter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchFilter.html"><span class="name">CouchFilter</span></a><span class="params">(<span name="design">design: <a href="CouchDesign.html" class="extype" name="net.uniscala.couch.CouchDesign">CouchDesign</a></span>, <span name="id">id: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Refers to a filter defined in a design.</p>
+    </li><li name="net.uniscala.couch.CouchList" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchListextendsCouchSubPath"></a>
+      <a id="CouchList:CouchList"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchList.html"><span class="name">CouchList</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A path for applying a couch list to a specific couch view.</p>
+    </li><li name="net.uniscala.couch.CouchLists" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchListsextendsCouchSubPath"></a>
+      <a id="CouchLists:CouchLists"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchLists.html"><span class="name">CouchLists</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represents a base for couch lists within a design.</p>
+    </li><li name="net.uniscala.couch.CouchLocals" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchLocalsextendsCouchSubPathwithCouchPathContainerOps[net.uniscala.couch.CouchSimpleDoc]"></a>
+      <a id="CouchLocals:CouchLocals"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchLocals.html"><span class="name">CouchLocals</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a> with <a href="CouchPathContainerOps.html" class="extype" name="net.uniscala.couch.CouchPathContainerOps">CouchPathContainerOps</a>[<a href="CouchSimpleDoc.html" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represents a base for resources found under &quot;/_local/&quot; in a database.</p>
+    </li><li name="net.uniscala.couch.CouchPath" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CouchPathextendsObject"></a>
+      <a id="CouchPath:CouchPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchPath.html"><span class="name">CouchPath</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represents a resource or URL path in a Couch database.</p>
+    </li><li name="net.uniscala.couch.CouchPathAttachmentOps" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CouchPathAttachmentOps[C&lt;:net.uniscala.couch.CouchDocBase]extendsCouchPathOpsBase[C]"></a>
+      <a id="CouchPathAttachmentOps[C&lt;:CouchDocBase]:CouchPathAttachmentOps[C]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchPathAttachmentOps.html"><span class="name">CouchPathAttachmentOps</span></a><span class="tparams">[<span name="C">C &lt;: <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span></span>]</span><span class="result"> extends <a href="CouchPathOpsBase.html" class="extype" name="net.uniscala.couch.CouchPathOpsBase">CouchPathOpsBase</a>[<span class="extype" name="net.uniscala.couch.CouchPathAttachmentOps.C">C</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides Couch API methods for attachments.</p>
+    </li><li name="net.uniscala.couch.CouchPathContainerOps" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CouchPathContainerOps[C&lt;:net.uniscala.couch.CouchDocBase]extendsCouchPathOpsBase[C]"></a>
+      <a id="CouchPathContainerOps[C&lt;:CouchDocBase]:CouchPathContainerOps[C]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchPathContainerOps.html"><span class="name">CouchPathContainerOps</span></a><span class="tparams">[<span name="C">C &lt;: <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span></span>]</span><span class="result"> extends <a href="CouchPathOpsBase.html" class="extype" name="net.uniscala.couch.CouchPathOpsBase">CouchPathOpsBase</a>[<span class="extype" name="net.uniscala.couch.CouchPathContainerOps.C">C</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides Couch API methods for parent paths.</p>
+    </li><li name="net.uniscala.couch.CouchPathOpsBase" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CouchPathOpsBase[C&lt;:net.uniscala.couch.CouchDocBase]extendsObject"></a>
+      <a id="CouchPathOpsBase[C&lt;:CouchDocBase]:CouchPathOpsBase[C]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchPathOpsBase.html"><span class="name">CouchPathOpsBase</span></a><span class="tparams">[<span name="C">C &lt;: <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The base class for traits embodying sets of operations at a 'path'
+(see CouchPath).</p>
+    </li><li name="net.uniscala.couch.CouchPathSimpleOps" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CouchPathSimpleOps[C&lt;:net.uniscala.couch.CouchDocBase]extendsCouchPathOpsBase[C]"></a>
+      <a id="CouchPathSimpleOps[C&lt;:CouchDocBase]:CouchPathSimpleOps[C]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchPathSimpleOps.html"><span class="name">CouchPathSimpleOps</span></a><span class="tparams">[<span name="C">C &lt;: <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span></span>]</span><span class="result"> extends <a href="CouchPathOpsBase.html" class="extype" name="net.uniscala.couch.CouchPathOpsBase">CouchPathOpsBase</a>[<span class="extype" name="net.uniscala.couch.CouchPathSimpleOps.C">C</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides Couch API methods for for simple operations on documents.</p>
+    </li><li name="net.uniscala.couch.CouchResultIterator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchResultIteratorextendsJsonParserwithIterator[net.uniscala.json.JsonObject]"></a>
+      <a id="CouchResultIterator:CouchResultIterator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchResultIterator.html"><span class="name">CouchResultIterator</span></a><span class="result"> extends <span class="extype" name="net.uniscala.json.JsonParser">JsonParser</span> with <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="net.uniscala.json.JsonObject">JsonObject</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Used for results from queries that adhere to the couch view API.</p>
+    </li><li name="net.uniscala.couch.CouchServerConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchServerConfigextendsCouchSubPath"></a>
+      <a id="CouchServerConfig:CouchServerConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchServerConfig.html"><span class="name">CouchServerConfig</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A path for server configuration operations.</p>
+    </li><li name="net.uniscala.couch.CouchServerUtilFiles" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchServerUtilFilesextendsCouchSubPath"></a>
+      <a id="CouchServerUtilFiles:CouchServerUtilFiles"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchServerUtilFiles.html"><span class="name">CouchServerUtilFiles</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A path for server utils file operations.</p>
+    </li><li name="net.uniscala.couch.CouchShow" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchShowextendsCouchSubPath"></a>
+      <a id="CouchShow:CouchShow"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchShow.html"><span class="name">CouchShow</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A path for querying a couch show.</p>
+    </li><li name="net.uniscala.couch.CouchShows" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchShowsextendsCouchSubPath"></a>
+      <a id="CouchShows:CouchShows"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchShows.html"><span class="name">CouchShows</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A base base for the couch shows in a design document.</p>
+    </li><li name="net.uniscala.couch.CouchSimpleDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchSimpleDocextendsCouchDocBasewithCouchPathSimpleOps[net.uniscala.couch.CouchSimpleDoc]withProductwithSerializable"></a>
+      <a id="CouchSimpleDoc:CouchSimpleDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchSimpleDoc.html"><span class="name">CouchSimpleDoc</span></a><span class="result"> extends <span class="extype" name="net.uniscala.couch.CouchDocBase">CouchDocBase</span> with <a href="CouchPathSimpleOps.html" class="extype" name="net.uniscala.couch.CouchPathSimpleOps">CouchPathSimpleOps</a>[<a href="CouchSimpleDoc.html" class="extype" name="net.uniscala.couch.CouchSimpleDoc">CouchSimpleDoc</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A simplified couch document that has a smaller set of API operation
+for a normal couch document.</p>
+    </li><li name="net.uniscala.couch.CouchSubPath" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CouchSubPathextendsCouchPath"></a>
+      <a id="CouchSubPath:CouchSubPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchSubPath.html"><span class="name">CouchSubPath</span></a><span class="result"> extends <a href="CouchPath.html" class="extype" name="net.uniscala.couch.CouchPath">CouchPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A non-root CouchPath (see CouchPath).</p>
+    </li><li name="net.uniscala.couch.CouchUpdate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchUpdateextendsCouchSubPath"></a>
+      <a id="CouchUpdate:CouchUpdate"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchUpdate.html"><span class="name">CouchUpdate</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A path for invoking a couch update handler.</p>
+    </li><li name="net.uniscala.couch.CouchUpdates" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchUpdatesextendsCouchSubPath"></a>
+      <a id="CouchUpdates:CouchUpdates"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchUpdates.html"><span class="name">CouchUpdates</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A base base for the couch updates in a design document.</p>
+    </li><li name="net.uniscala.couch.CouchView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchViewextendsCouchSubPath"></a>
+      <a id="CouchView:CouchView"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchView.html"><span class="name">CouchView</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A path for querying a couch view.</p>
+    </li><li name="net.uniscala.couch.CouchViewOptions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchViewOptionsextendsProductwithSerializable"></a>
+      <a id="CouchViewOptions:CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchViewOptions.html"><span class="name">CouchViewOptions</span></a><span class="params">(<span name="keyOption">keyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="keysOption">keysOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonArray">JsonArray</span>] = <span class="symbol">scala.None</span></span>, <span name="startKeyOption">startKeyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="startKeyDocIdOption">startKeyDocIdOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="endKeyOption">endKeyOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="net.uniscala.json.JsonValue">JsonValue</span>[_]] = <span class="symbol">scala.None</span></span>, <span name="endKeyDocIdOption">endKeyDocIdOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="limitOption">limitOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="staleOption">staleOption: <span class="extype" name="scala.Option">Option</span>[<a href="CouchViewOptions$$Stale.html" class="extype" name="net.uniscala.couch.CouchViewOptions.Stale">Stale</a>] = <span class="symbol">scala.None</span></span>, <span name="descendingOption">descendingOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="skipOption">skipOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">scala.None</span></span>, <span name="groupOption">groupOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="groupLevelOption">groupLevelOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="reduceOption">reduceOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="includeDocsOption">includeDocsOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="inclusiveEndOption">inclusiveEndOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="updateSeqOption">updateSeqOption: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A set of options used for view requests.</p>
+    </li><li name="net.uniscala.couch.CouchViews" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchViewsextendsCouchSubPath"></a>
+      <a id="CouchViews:CouchViews"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchViews.html"><span class="name">CouchViews</span></a><span class="result"> extends <a href="CouchSubPath.html" class="extype" name="net.uniscala.couch.CouchSubPath">CouchSubPath</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A base base for the couch views in a design document.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="net.uniscala.couch.Couch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Couch"></a>
+      <a id="Couch:Couch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Couch$.html"><span class="name">Couch</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchAttachment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchAttachment"></a>
+      <a id="CouchAttachment:CouchAttachment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchAttachment$.html"><span class="name">CouchAttachment</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchChangeOptions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchChangeOptions"></a>
+      <a id="CouchChangeOptions:CouchChangeOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchChangeOptions$.html"><span class="name">CouchChangeOptions</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchDoc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchDoc"></a>
+      <a id="CouchDoc:CouchDoc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchDoc$.html"><span class="name">CouchDoc</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchView"></a>
+      <a id="CouchView:CouchView"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchView$.html"><span class="name">CouchView</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.CouchViewOptions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CouchViewOptions"></a>
+      <a id="CouchViewOptions:CouchViewOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CouchViewOptions$.html"><span class="name">CouchViewOptions</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.http" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="http"></a>
+      <a id="http:http"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="http/package.html"><span class="name">http</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="net.uniscala.couch.util" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="util"></a>
+      <a id="util:util"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="util/package.html"><span class="name">util</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

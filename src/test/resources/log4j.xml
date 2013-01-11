@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+    This file is part of the Uniscala Couch project.
+    Copyright (C) 2012 Sustainable Software Pty Ltd.
+    This is open source software, licensed under the Apache License
+    version 2.0 license - please see the LICENSE file included in
+    the distribution.
+
+    Authors:
+    Sam Stainsby (sam@sustainablesoftware.com.au)
+
+-->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+<appender name="console" class="org.apache.log4j.ConsoleAppender" />
+
+<root>
+  <priority value ="info"/>
+  <appender-ref ref="console"/>
+</root>
+
+</log4j:configuration>

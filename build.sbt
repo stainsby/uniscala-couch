@@ -2,7 +2,7 @@ name := "Uniscala Couch"
 
 organization := "net.uniscala"
 
-version := "0.2-SNAPSHOT"
+version := "0.2"
 
 description := "A couchdb driver for Scala, but not an object mapper."
 

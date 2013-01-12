@@ -4,7 +4,7 @@ organization := "net.uniscala"
 
 version := "0.2-SNAPSHOT"
 
-description := "A couchdb driver for Scala."
+description := "A couchdb driver for Scala, but not an object mapper."
 
 startYear := Some(2013)
 
@@ -38,7 +38,11 @@ pomExtra := (
 
 scalaVersion := "2.10.0"
 
-scalacOptions := List("-deprecation", "-feature")
+scalacOptions <<= scalaVersion map { v: String =>
+  val default = "-deprecation" :: "-unchecked" :: Nil
+  if (v.startsWith("2.9.")) default else
+    default ++ ("-feature" :: "-language:implicitConversions" :: Nil)
+}
 
 libraryDependencies ++= Seq(
   "io.netty" % "netty" % "4.0.0.Alpha8",
@@ -48,8 +52,14 @@ libraryDependencies ++= Seq(
 
 resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
 
-publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.m2/repository")))
-
 publishMavenStyle := true
 
 publishArtifact in Test := false
+
+publishTo <<= version { (v: String) =>
+  val nexus = "https://oss.sonatype.org/"
+  if (v.trim.endsWith("SNAPSHOT"))
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+}

@@ -83,6 +83,26 @@ See the [Usage] document.
 See the [scaladoc].
 
 
+## Including the library in your project
+
+Uniscala Couch releases are available in the mainstream repositories:
+
+    <dependency>
+      <groupId>net.uniscala</groupId>
+      <artifactId>uniscala-couch_2.10</artifactId>
+      <version>0.2</version>
+    </dependency>
+
+in your `pom.xml`, or using SBT, in your `build.sbt`:
+
+    "net.uniscala" %% "uniscala-couch" % "0.2"
+
+
+## Building
+
+Uniscala Couch is built in a fairly standard way using SBT.
+
+
 ## CouchDB HTTP API Coverage
 
 Below, the API sections correspond to those in the Couch API specification - 

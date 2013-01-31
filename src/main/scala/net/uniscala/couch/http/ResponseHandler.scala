@@ -45,7 +45,7 @@ class ResponseHandler(
     ) = {
       if (chunk.isLast) {
         onContentEnd(ctx)
-        ctx.channel.close
+        ctx.channel.close // TODO: use fut.addListener(ChannelFutureListener.CLOSE)?
       } else {
         val buf = chunk.getContent
         assert(buf.hasNioBuffer, "expected NIO buffer")

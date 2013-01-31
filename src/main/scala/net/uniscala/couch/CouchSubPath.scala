@@ -18,7 +18,7 @@ package net.uniscala.couch
  * always the same as the document ID of a couch document that 
  * represents the associated resource in the database. For
  * example, in the case of a design document in couch that has an ID 
- * like '_design/aaa', the corresponding CocuhDesign object would
+ * like '_design/aaa', the corresponding CouchDesign object would
  * have an 'id' of 'aaa'.
  */
 abstract class CouchSubPath(

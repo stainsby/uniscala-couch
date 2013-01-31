@@ -92,6 +92,7 @@ with CouchPath {
   protected def configureAuth(req: HttpRequest): Unit = {
     import Http.Header._
     credentialsOption match {
+      case None => { } // do nothing
       case Some(basic: BasicCredentials) => {
         req.setHeader(AUTHORIZATION, basic.authorizationHeader)
       }

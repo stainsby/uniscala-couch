@@ -90,12 +90,12 @@ Uniscala Couch releases are available in the mainstream repositories:
     <dependency>
       <groupId>net.uniscala</groupId>
       <artifactId>uniscala-couch_2.10</artifactId>
-      <version>0.2</version>
+      <version>0.3</version>
     </dependency>
 
 in your `pom.xml`, or using SBT, in your `build.sbt`:
 
-    "net.uniscala" %% "uniscala-couch" % "0.2"
+    "net.uniscala" %% "uniscala-couch" % "0.3"
 
 
 ## Building

@@ -18,43 +18,38 @@ import io.netty.channel.{
   ChannelInboundMessageHandlerAdapter, ChannelHandlerContext
 }
 import io.netty.handler.codec.http._
-import io.netty.logging.InternalLoggerFactory
-
-
-object ResponseHandler {
-  lazy val logger =
-    InternalLoggerFactory.getInstance(classOf[ResponseHandler].getSimpleName)
-}
 
 
 class ResponseHandler(
   promise: Promise[Response]
-) extends ChannelInboundMessageHandlerAdapter[HttpResponse](
-  classOf[HttpResponse]
-) {
-  
-  import ResponseHandler.logger
+) extends ChannelInboundMessageHandlerAdapter[HttpResponse] {
   
   @volatile private var response: Response = null
   
-  class ChunkHandler
-  extends ChannelInboundMessageHandlerAdapter[HttpChunk](classOf[HttpChunk]) {
+  class ChunkHandler extends ChannelInboundMessageHandlerAdapter[HttpContent] {
+    
     override def messageReceived(
       ctx: ChannelHandlerContext,
-      chunk: HttpChunk
+      chunk: HttpContent
     ) = {
-      if (chunk.isLast) {
-        onContentEnd(ctx)
-        ctx.channel.close // TODO: use fut.addListener(ChannelFutureListener.CLOSE)?
-      } else {
-        val buf = chunk.getContent
-        assert(buf.hasNioBuffer, "expected NIO buffer")
-        try {
-          onContent(ctx, buf.nioBuffer)
-        } catch {
-          case err: Throwable => {
-            onContentFailure(ctx, err)
-          }
+      //println("got chunk")
+      val buf = chunk.data
+      try {
+        onContent(ctx, buf.nioBuffer)
+      } catch {
+        case err: Throwable => {
+          onContentFailure(ctx, err)
+        }
+      }
+      chunk match {
+        case _: LastHttpContent => {
+          //println("  - LAST chunk")
+          onContentEnd(ctx)
+          ctx.channel.close
+        }
+        case _ => {
+          //println("  - WASN'T last chunk")
+          
         }
       }
     }
@@ -69,43 +64,31 @@ class ResponseHandler(
   
   protected def onContentEnd(ctx: ChannelHandlerContext) = {
     
-    assert(response != null, "illegal response state")
-    
-    val pipe = response.contentPipe
+    assert(this.response != null, "illegal response state")
     
     try {
-      logger.debug("closing content pipe")
-      pipe.sink.close
-      logger.debug("content pipe closed OK")
-    } catch {
-      case err: Throwable =>
-        logger.warn("attempt to close response stream failed: " + err)
+      this.response.contentPipe.sink.close
     }
     
     try {
-      logger.debug("closing channel: " + ctx.channel)
       ctx.channel.close
-      logger.debug("channel closed OK")
-    } catch {
-      case err: Throwable =>
-        logger.warn("attempt to close channel failed: " + err)
     }
   }
   
   protected def onContentFailure(ctx: ChannelHandlerContext, err: Throwable): Unit =
-    response.content.failure(err)
+    this.response.content.failure(err)
   
   override def messageReceived(
     ctx: ChannelHandlerContext,
-    httpResponse: HttpResponse
+    msg: HttpResponse
   ): Unit = {
-    import HttpTransferEncoding._
-    this.response = new Response(this, httpResponse)
-    val b = promise.success(response)
-    httpResponse.getTransferEncoding() match {
-      case SINGLE => {
-        val buf = httpResponse.getContent()
-        assert(buf.hasNioBuffer, "invalid content buffer type")
+    assert(this.response == null, "received multiple HTTP responses")
+    this.response = new Response(this, msg)
+    val b = promise.success(this.response)
+    msg match {
+      case resp: FullHttpResponse => {
+        //println("FULL HTTP response")
+        val buf = resp.data
         try {
           onContent(ctx, buf.nioBuffer)
           onContentEnd(ctx)
@@ -115,9 +98,17 @@ class ResponseHandler(
           }
         }
       }
-      case STREAMED| CHUNKED => {
-        ctx.pipeline.addLast("http-content", chunkHandler)
+      case resp: HttpResponse => {
+        //println("(expecting chunked content)")
       }
     }
+  }
+  
+  override def afterAdd(ctx: ChannelHandlerContext) = {
+    ctx.pipeline.addLast(this.chunkHandler)
+  }
+  
+  override def beforeRemove(ctx: ChannelHandlerContext) = {
+    ctx.pipeline.remove(this.chunkHandler)
   }
 }

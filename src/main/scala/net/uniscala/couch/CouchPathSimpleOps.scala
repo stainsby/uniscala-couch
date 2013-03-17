@@ -88,7 +88,7 @@ trait CouchPathSimpleOps[C <: CouchDocBase] extends CouchPathOpsBase[C] {
       case _ => { }
     }
     val req = prepareCopy()
-    req.setHeader(
+    req.headers.set(
       Http.Header.DESTINATION,
       destinstionHeaderBuilder.toString
     )

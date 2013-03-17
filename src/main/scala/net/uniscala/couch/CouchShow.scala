@@ -43,7 +43,7 @@ extends CouchSubPath(shows, name) {
     var url = baseUrl & queryParams
     docIdOpt foreach { docId => url = url / docId }
     val req = prepareGet(url)
-    req.setHeader(Http.Header.ACCEPT, Mime.ANY.toString)
+    req.headers.set(Http.Header.ACCEPT, Mime.ANY.toString)
     
     client.send(req) flatMap  { resp =>
       resp.bytes map { content =>

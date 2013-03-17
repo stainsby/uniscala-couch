@@ -116,22 +116,22 @@ class Response private[http] (
   
   private[http] lazy val contentPipe: Pipe = Pipe.open()
   
-  lazy val statusCode: Int = nettyResponse.getStatus.getCode
+  lazy val statusCode: Int = nettyResponse.getStatus.code
   
   lazy val statusMessageOption: Option[String] =
-    Option(nettyResponse.getStatus.getReasonPhrase)
+    Option(nettyResponse.getStatus.reasonPhrase)
   
   lazy val content = new this.Content(contentPipe.source)
   
   private[http] def appendContent(buf: ByteBuffer): Unit =
     contentPipe.sink.write(buf)
   
-  def header(key: String): String = nettyResponse.getHeader(key)
+  def header(key: String): String = nettyResponse.headers.get(key)
   
-  def headers(key: String): Seq[String] = nettyResponse.getHeaders(key)
+  def headers(key: String): Seq[String] = nettyResponse.headers.getAll(key)
   
   def headers: Seq[(String, String)] = {
-    nettyResponse.getHeaders map { entry =>
+    nettyResponse.headers.entries map { entry =>
       (entry.getKey, entry.getValue)
     }
   }

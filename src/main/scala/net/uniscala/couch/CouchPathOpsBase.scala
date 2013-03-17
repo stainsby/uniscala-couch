@@ -12,7 +12,7 @@ package net.uniscala.couch
 
 import scala.concurrent.{ExecutionContext, Future}
 
-import io.netty.handler.codec.http.HttpRequest
+import io.netty.handler.codec.http.FullHttpRequest
 
 import net.uniscala.json.JsonObject
 
@@ -34,7 +34,7 @@ trait CouchPathOpsBase[C <: CouchDocBase] {
   protected def newDoc(id: String, rev: String, jdoc: JsonObject): C
   
   private[couch] def fetchInsertedDoc(
-    req: HttpRequest,
+    req: FullHttpRequest,
     jdoc: JsonObject
   ): Future[C] = {
     
@@ -47,7 +47,7 @@ trait CouchPathOpsBase[C <: CouchDocBase] {
     }
   }
   
-  private[couch] def fetchDoc(req: HttpRequest): Future[C] = {
+  private[couch] def fetchDoc(req: FullHttpRequest): Future[C] = {
     
     import CouchDoc.Field._
     
@@ -58,7 +58,7 @@ trait CouchPathOpsBase[C <: CouchDocBase] {
     }
   }
   
-  private[couch] def fetchDocOption(req: HttpRequest): Future[Option[C]] = {
+  private[couch] def fetchDocOption(req: FullHttpRequest): Future[Option[C]] = {
     fetchDoc(req) map { Some(_) }  recover {
       case CouchFailure(Couch.Field.NOT_FOUND, _) => None
     }

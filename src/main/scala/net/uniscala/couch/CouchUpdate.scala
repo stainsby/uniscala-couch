@@ -55,7 +55,7 @@ class CouchUpdate private[couch] (
     } getOrElse {
       preparePost(baseUrl & options)
     })
-    req.setHeader(Http.Header.ACCEPT, Mime.ANY.toString)
+    req.headers.set(Http.Header.ACCEPT, Mime.ANY.toString)
     
     client.send(req) flatMap { resp =>
       if (resp.statusCode / 100 == 4) {

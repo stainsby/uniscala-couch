@@ -19,17 +19,18 @@ import java.util.concurrent.CancellationException
 
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel._
-import io.netty.channel.socket.nio.{NioEventLoopGroup, NioSocketChannel}
+import io.netty.channel.nio.NioEventLoopGroup
+import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.http._
-import io.netty.logging.InternalLoggerFactory
+//import io.netty.logging.InternalLoggerFactory
 
 import net.uniscala.couch.util.Http.Header.CONTENT_LENGTH
 
 
 object Client {
   
-  lazy val logger =
-    InternalLoggerFactory.getInstance(classOf[Client].getSimpleName)
+  //lazy val logger =
+  //  InternalLoggerFactory.getInstance(classOf[Client].getSimpleName)
   
   private val HTTP11 = new HttpVersion("HTTP", 1, 1, true)
   private val COPY = new HttpMethod("COPY")
@@ -41,32 +42,32 @@ object Client {
     path: String,
     method: HttpMethod = HttpMethod.GET,
     contentLengthOpt: Option[Long] = None
-  ): HttpRequest = {
+  ): FullHttpRequest = {
     assert(path != null, "null path")
     assert(method != null, "null method")
-    val req = new DefaultHttpRequest(HTTP11, method, path)
+    val req = new DefaultFullHttpRequest(HTTP11, method, path)
     contentLengthOpt foreach { len: Long => 
-      req.addHeader(CONTENT_LENGTH, len)
+      req.headers.add(CONTENT_LENGTH, len)
     }
     req
   }
   
-  def prepareGet(path: String): HttpRequest =
+  def prepareGet(path: String): FullHttpRequest =
     newRequest(path, HttpMethod.GET)
   
-  def preparePost(path: String): HttpRequest =
+  def preparePost(path: String): FullHttpRequest =
     newRequest(path, HttpMethod.POST)
   
-  def preparePut(path: String): HttpRequest =
+  def preparePut(path: String): FullHttpRequest =
     newRequest(path, HttpMethod.PUT)
   
-  def prepareDelete(path: String): HttpRequest =
+  def prepareDelete(path: String): FullHttpRequest =
     newRequest(path, HttpMethod.DELETE)
   
-  def prepareHead(path: String): HttpRequest =
+  def prepareHead(path: String): FullHttpRequest =
     newRequest(path, HttpMethod.HEAD)
   
-  def prepareCopy(path: String): HttpRequest =
+  def prepareCopy(path: String): FullHttpRequest =
     newRequest(path, new HttpMethod("COPY"))  
 }
 
@@ -80,7 +81,7 @@ class Client(val address: InetSocketAddress) {
   // this everywhere?
   import ExecutionContext.Implicits.global
   import Client._
-  import Client.logger._
+  //import Client.logger._
   
   protected lazy val eventGroup = new NioEventLoopGroup
   
@@ -104,15 +105,15 @@ class Client(val address: InetSocketAddress) {
     new ChannelFutureListener() {
       override def operationComplete(f: ChannelFuture) = {
         if (f.isSuccess) {
-          debug("request succeeded: " + f)
+          //debug("request succeeded: " + f)
         } else {
-          if (f.isCancelled) {
-            debug("request cancelled: " + f)
-            responsePromise.failure(new CancellationException())
-          } else {
-            debug("request failed: " + f)
+          //if (f.isCancelled) {
+          //  //debug("request cancelled: " + f)
+          //  responsePromise.failure(new CancellationException())
+          //} else {
+            //debug("request failed: " + f)
             responsePromise.failure(f.cause)
-          }
+          //}
         }
       }
     }

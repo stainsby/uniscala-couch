@@ -85,7 +85,7 @@ trait CouchPathAttachmentOps[C <: CouchDocBase] extends CouchPathOpsBase[C] {
     import scala.concurrent.ExecutionContext.Implicits.global
     assert(in != null, "null input stream")
     val req = prepareAttachRequest(attachmentId: String, contentType: Mime)
-    req.setHeader(CONTENT_LENGTH, contentLength)
+    req.headers.set(CONTENT_LENGTH, contentLength)
     client.upload(req, in, contentType, contentLength).
       flatMap(attachResultHandler)
   }
@@ -102,7 +102,7 @@ trait CouchPathAttachmentOps[C <: CouchDocBase] extends CouchPathOpsBase[C] {
     import scala.concurrent.ExecutionContext.Implicits.global
     assert(in != null, "null input stream")
     val req = prepareAttachRequest(attachmentId: String, contentType: Mime)
-    req.setHeader(CONTENT_LENGTH, contentLength)
+    req.headers.set(CONTENT_LENGTH, contentLength)
     client.upload(req, in, contentType, contentLength).
       flatMap(attachResultHandler)
   }

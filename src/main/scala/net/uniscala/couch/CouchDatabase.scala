@@ -186,8 +186,9 @@ extends CouchSubPath(client, name) with CouchPathContainerOps[CouchDoc] {
     }
     val data = docsJson.toCompactString.getBytes(UTF_8)
     var req = preparePost(CouchDatabase.Path.BULK_DOCS)
-    req.setContent(Unpooled.wrappedBuffer(data))
-    req.setHeader(Http.Header.CONTENT_LENGTH, data.size)
+    //req.setContent(Unpooled.wrappedBuffer(data))
+    req.data.writeBytes(data)
+    req.headers.set(Http.Header.CONTENT_LENGTH, data.size)
     
     fetchJsonArray(req) map { jarr =>
       jarr map { jval =>

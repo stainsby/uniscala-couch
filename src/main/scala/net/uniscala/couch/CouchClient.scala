@@ -76,7 +76,7 @@ with CouchPath {
   import ExecutionContext.Implicits.global
   import Couch._
   import CouchClient._
-  import Client.logger
+  //import Client.logger
   
   override val parentOption = None
   
@@ -94,7 +94,7 @@ with CouchPath {
     credentialsOption match {
       case None => { } // do nothing
       case Some(basic: BasicCredentials) => {
-        req.setHeader(AUTHORIZATION, basic.authorizationHeader)
+        req.headers.set(AUTHORIZATION, basic.authorizationHeader)
       }
     }
   }
@@ -106,10 +106,10 @@ with CouchPath {
   protected def addDefaultHeaders(req: HttpRequest): Unit = {
     import Http.Header._
     import Mime._
-    req.setHeader(USER_AGENT, classOf[CouchClient].getName + " 1.0")
-    req.setHeader(HOST, host + ":" + port)
-    req.setHeader(ACCEPT, ANY)
-    req.setHeader(CONTENT_TYPE, JSON)
+    req.headers.set(USER_AGENT, classOf[CouchClient].getName + " 1.0")
+    req.headers.set(HOST, host + ":" + port)
+    req.headers.set(ACCEPT, ANY)
+    req.headers.set(CONTENT_TYPE, JSON)
     configureAuth(req)
   }
   
@@ -130,7 +130,7 @@ with CouchPath {
     import Http.Header._
     request.setMethod(HttpMethod.PUT)
     addDefaultHeaders(request)
-    request.setHeader(CONTENT_TYPE, contentType.toString)
+    request.headers.set(CONTENT_TYPE, contentType.toString)
     val responsePromise = Promise[Response]()
   
     val fut = responsePromise.future
@@ -143,22 +143,22 @@ with CouchPath {
         
         override def operationComplete(f: ChannelFuture) = {
           if (f.isSuccess) {
-            logger.debug("upload succeeded: " + f)
+            //logger.debug("upload succeeded: " + f)
           } else {
-            if (f.isCancelled) {
-              logger.debug("upload cancelled: " + f)
-              responsePromise.failure(new CancellationException())
-            } else {
-              logger.debug("upload failed: " + f)
+            //if (f.isCancelled) {
+            //  //logger.debug("upload cancelled: " + f)
+            //  responsePromise.failure(new CancellationException())
+            //} else {
+            //  //logger.debug("upload failed: " + f)
               responsePromise.failure(f.cause)
-            }
+            //}
           }
           try {
-            logger.debug("attempting to close stream ...")
+            //logger.debug("attempting to close stream ...")
             stream.close
-            logger.debug("closed stream: " + stream)
+            //logger.debug("closed stream: " + stream)
           } catch {
-            case err: Throwable => logger.error("failed to close stream: " + err)
+            case err: Throwable => {} //logger.error("failed to close stream: " + err)
           }
         } 
       })
@@ -166,16 +166,16 @@ with CouchPath {
     chan.write(request).addListener(new ChannelFutureListener() {
       override def operationComplete(f: ChannelFuture) = {
         if (f.isSuccess) {
-          logger.debug("request succeeded: " + f)
+          //logger.debug("request succeeded: " + f)
           startUpload()
         } else {
-          if (f.isCancelled) {
-            logger.debug("request cancelled: " + f)
-            responsePromise.failure(new CancellationException())
-          } else {
-            logger.debug("request failed: " + f)
+          //if (f.isCancelled) {
+          //  //logger.debug("request cancelled: " + f)
+          //  responsePromise.failure(new CancellationException())
+          //} else {
+            //logger.debug("request failed: " + f)
             responsePromise.failure(f.cause)
-          }
+          //}
         }
       }
     })
@@ -194,7 +194,7 @@ with CouchPath {
     assert(request != null, "null request")
     assert(file != null, "null file")
     assert(file.exists, "file doesn't exist")
-    request.setHeader(CONTENT_LENGTH, file.length.toString)
+    request.headers.set(CONTENT_LENGTH, file.length.toString)
     upload0(request, new ChunkedNioFile(file), contentType)
   }
   
@@ -210,7 +210,7 @@ with CouchPath {
     assert(request != null, "null request")
     assert(in != null, "null input stream")
     assert(contentLength > 0, "positive content length is required")
-    request.setHeader(CONTENT_LENGTH, contentLength)
+    request.headers.set(CONTENT_LENGTH, contentLength)
     upload0(request, new ChunkedStream(in), contentType)
   }
   
@@ -226,7 +226,7 @@ with CouchPath {
     assert(request != null, "null request")
     assert(in != null, "null input channel")
     assert(contentLength > 0, "positive content length is required")
-    request.setHeader(CONTENT_LENGTH, contentLength)
+    request.headers.set(CONTENT_LENGTH, contentLength)
     upload0(request, new ChunkedNioStream(in), contentType)
   }
   
@@ -297,7 +297,7 @@ with CouchPath {
     bytesOption foreach { n => query = query + (BYTES -> n.toString) }
     offsetOption foreach { n => query = query + (OFFSET -> n.toString) }
     val req = prepareGet(baseUrl / Path.LOG & query)
-    req.setHeader(Http.Header.ACCEPT, Mime.TEXT.toString)
+    req.headers.set(Http.Header.ACCEPT, Mime.TEXT.toString)
     text(req)
   }
   

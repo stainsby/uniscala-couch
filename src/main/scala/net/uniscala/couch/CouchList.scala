@@ -56,7 +56,7 @@ class CouchList private[couch] (
     val req = keysOpt map { keys =>
       preparePost(Json(CouchView.Param.KEYS -> keys), url)
     } getOrElse prepareGet(url)
-    req.setHeader(ACCEPT, contentType.toString)
+    req.headers.set(ACCEPT, contentType.toString)
     client.send(req) flatMap { resp =>
       val statusCode = resp.statusCode
       if (statusCode == 200) {

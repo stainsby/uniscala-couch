@@ -15,7 +15,7 @@ import scala.concurrent.{ExecutionContext, Future}
 import java.io.File
 
 import io.netty.buffer.{ByteBuf, Unpooled}
-import io.netty.handler.codec.http.HttpRequest
+import io.netty.handler.codec.http.FullHttpRequest
 import io.netty.util.CharsetUtil.UTF_8
 
 import net.uniscala.json._
@@ -69,11 +69,12 @@ trait CouchPath {
     bytes: Array[Byte],
     isPut: Boolean,
     url: Url
-  ): HttpRequest = {
+  ): FullHttpRequest = {
     val req = if (isPut) preparePut(url) else preparePost(url)
-    req.setContent(Unpooled.wrappedBuffer(bytes))
-    req.setHeader(CONTENT_TYPE, BINARY)
-    req.setHeader(CONTENT_LENGTH, bytes.size)
+    //req.setContent(Unpooled.wrappedBuffer(bytes))
+    req.data.writeBytes(Unpooled.wrappedBuffer(bytes))
+    req.headers.set(CONTENT_TYPE, BINARY)
+    req.headers.set(CONTENT_LENGTH, bytes.size)
     req
   }
   
@@ -82,114 +83,116 @@ trait CouchPath {
     isPut: Boolean,
     compact: Boolean,
     url: Url
-  ): HttpRequest = {
+  ): FullHttpRequest = {
     val jsonString = if (compact) json.toCompactString else json.toPrettyString
     val req = preparePutOrPost(jsonString.getBytes(UTF_8), isPut, url)
-    req.setHeader(CONTENT_TYPE, JSON)
+    req.headers.set(CONTENT_TYPE, JSON)
     req
   }
   
-  private[couch] def prepareGet(): HttpRequest = prepareGet(baseUrl)
+  private[couch] def prepareGet(): FullHttpRequest = prepareGet(baseUrl)
   
-  private[couch] def prepareGet(path: String*): HttpRequest =
+  private[couch] def prepareGet(path: String*): FullHttpRequest =
     prepareGet(baseUrl / (path:_*))
   
-  private[couch] def prepareGet(url: Url): HttpRequest =
+  private[couch] def prepareGet(url: Url): FullHttpRequest =
     Client.prepareGet(enc(url))
   
-  private[couch] def preparePut(): HttpRequest = preparePut(baseUrl)
+  private[couch] def preparePut(): FullHttpRequest = preparePut(baseUrl)
   
-  private[couch] def preparePut(path: String*): HttpRequest =
+  private[couch] def preparePut(path: String*): FullHttpRequest =
     preparePut(baseUrl / (path:_*))
   
-  private[couch] def preparePut(url: Url): HttpRequest =
+  private[couch] def preparePut(url: Url): FullHttpRequest =
     Client.preparePut(enc(url))
   
-  private[couch] def preparePut(buf: ByteBuf, url: Url): HttpRequest = {
+  private[couch] def preparePut(buf: ByteBuf, url: Url): FullHttpRequest = {
     val req = preparePut(url)
-    req.setContent(buf)
+    //req.setContent(buf)
+    req.data.writeBytes(buf)
     req
   }
   
-  private[couch] def preparePut(bytes: Array[Byte], url: Url): HttpRequest =
+  private[couch] def preparePut(bytes: Array[Byte], url: Url): FullHttpRequest =
     preparePutOrPost(bytes, true, url)
   
   private[couch] def preparePut(
     json: JsonValue[_],
     compact: Boolean,
     url: Url
-  ): HttpRequest = preparePutOrPost(json, true, compact, url)
+  ): FullHttpRequest = preparePutOrPost(json, true, compact, url)
   
   private[couch] def preparePut(
     json: JsonValue[_],
     url: Url
-  ): HttpRequest = preparePut(json, true, url)
+  ): FullHttpRequest = preparePut(json, true, url)
   
-  private[couch] def preparePost(): HttpRequest = preparePost(baseUrl)
+  private[couch] def preparePost(): FullHttpRequest = preparePost(baseUrl)
   
-  private[couch] def preparePost(path: String*): HttpRequest =
+  private[couch] def preparePost(path: String*): FullHttpRequest =
     preparePost(baseUrl / (path:_*))
   
-  private[couch] def preparePost(url: Url): HttpRequest =
+  private[couch] def preparePost(url: Url): FullHttpRequest =
     Client.preparePost(enc(url))
   
-  private[couch] def preparePost(content: ByteBuf, url: Url): HttpRequest = {
+  private[couch] def preparePost(content: ByteBuf, url: Url): FullHttpRequest = {
     val req = preparePost(url)
-    req.setContent(content)
+    //req.setContent(content)
+    req.data.writeBytes(content)
     req
   }
   
-  private[couch] def preparePost(bytes: Array[Byte],url: Url): HttpRequest =
+  private[couch] def preparePost(bytes: Array[Byte],url: Url): FullHttpRequest =
     preparePutOrPost(bytes, false, url)
   
   private[couch] def preparePost(
     json: JsonValue[_],
     compact: Boolean,
     url: Url
-  ): HttpRequest = preparePutOrPost(json, false, compact, url)
+  ): FullHttpRequest = preparePutOrPost(json, false, compact, url)
   
   private[couch] def preparePost(
     content: JsonValue[_],
     url: Url
-  ): HttpRequest = preparePost(content, true, url)
+  ): FullHttpRequest = preparePost(content, true, url)
   
-  private[couch] def prepareDelete(): HttpRequest = prepareDelete(baseUrl)
+  private[couch] def prepareDelete(): FullHttpRequest = prepareDelete(baseUrl)
   
-  private[couch] def prepareDelete(path: String*): HttpRequest =
+  private[couch] def prepareDelete(path: String*): FullHttpRequest =
     prepareDelete(baseUrl / (path:_*))
   
-  private[couch] def prepareDelete(url: Url): HttpRequest =
+  private[couch] def prepareDelete(url: Url): FullHttpRequest =
     Client.prepareDelete(enc(url))
   
-  private[couch] def prepareHead(): HttpRequest = prepareHead(baseUrl)
+  private[couch] def prepareHead(): FullHttpRequest = prepareHead(baseUrl)
   
-  private[couch] def prepareHead(path: String*): HttpRequest =
+  private[couch] def prepareHead(path: String*): FullHttpRequest =
     prepareHead(baseUrl / (path:_*))
   
-  private[couch] def prepareHead(url: Url): HttpRequest =
+  private[couch] def prepareHead(url: Url): FullHttpRequest =
     Client.prepareHead(enc(url))
   
-  private[couch] def prepareCopy(): HttpRequest = prepareCopy(baseUrl)
+  private[couch] def prepareCopy(): FullHttpRequest = prepareCopy(baseUrl)
   
-  private[couch] def prepareCopy(path: String*): HttpRequest =
+  private[couch] def prepareCopy(path: String*): FullHttpRequest =
     prepareCopy(baseUrl / (path:_*))
   
-  private[couch] def prepareCopy(url: Url): HttpRequest =
+  private[couch] def prepareCopy(url: Url): FullHttpRequest =
     Client.prepareCopy(enc(url))
   
-  private[couch] def fetchJson(req: HttpRequest): Future[JsonValue[_]] =
+  private[couch] def fetchJson(req: FullHttpRequest): Future[JsonValue[_]] =
     client.text(req) map toSafeJsonObject
   
-  private[couch] def fetchJsonObject(req: HttpRequest): Future[JsonObject] =
+  private[couch] def fetchJsonObject(req: FullHttpRequest): Future[JsonObject] =
     client.text(req) map toSafeJsonObject
   
-  private[couch] def fetchJsonArray(req: HttpRequest): Future[JsonArray] =
+  private[couch] def fetchJsonArray(req: FullHttpRequest): Future[JsonArray] =
     client.text(req) map toSafeJsonArray
   
-  private[couch] def fetchNothing(req: HttpRequest): Future[Unit] =
+  private[couch] def fetchNothing(req: FullHttpRequest): Future[Unit] =
     fetchJsonObject(req) map { jobj => () }
   
-  private[couch] def fetchRev(req: HttpRequest): Future[CouchDoc.Rev] =
+  private[couch] def fetchRev(req: FullHttpRequest): Future[CouchDoc.Rev] =
     client.text(req) map { s =>
       import CouchDoc.Param._
       val jobj = toSafeJsonObject(s)

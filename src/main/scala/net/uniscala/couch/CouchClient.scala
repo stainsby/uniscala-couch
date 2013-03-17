@@ -126,7 +126,9 @@ with CouchPath {
     stream: ChunkedByteInput,
     contentType: Mime
   ): Future[Response] = {
+    
     import Http.Header._
+    
     request.setMethod(HttpMethod.PUT)
     addDefaultHeaders(request)
     request.headers.set(CONTENT_TYPE, contentType.toString)
@@ -137,25 +139,22 @@ with CouchPath {
     val uploader = new ChunkedWriteHandler()
     chan.pipeline.addLast("uploader", uploader)
     chan.pipeline.addLast("responder", new ResponseHandler(responsePromise))
-    def startUpload() = {
-      chan.write(stream).addListener(new ChannelFutureListener() {
-        
-        override def operationComplete(f: ChannelFuture) = {
-          if (!f.isSuccess) {
-            responsePromise.failure(f.cause)
-          }
-          try {
-            stream.close
-          }
-        } 
-      })
-    }
     chan.write(request).addListener(new ChannelFutureListener() {
       override def operationComplete(f: ChannelFuture) = {
         if (!f.isSuccess) {
           responsePromise.failure(f.cause)
         }
       }
+    })
+    chan.write(stream).addListener(new ChannelFutureListener() {
+      override def operationComplete(f: ChannelFuture) = {
+        if (!f.isSuccess) {
+          responsePromise.failure(f.cause)
+        }
+        try {
+          stream.close
+        }
+      } 
     })
     chan.flush()
     fut

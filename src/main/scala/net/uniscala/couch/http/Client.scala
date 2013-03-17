@@ -22,15 +22,11 @@ import io.netty.channel._
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.http._
-//import io.netty.logging.InternalLoggerFactory
 
 import net.uniscala.couch.util.Http.Header.CONTENT_LENGTH
 
 
 object Client {
-  
-  //lazy val logger =
-  //  InternalLoggerFactory.getInstance(classOf[Client].getSimpleName)
   
   private val HTTP11 = new HttpVersion("HTTP", 1, 1, true)
   private val COPY = new HttpMethod("COPY")
@@ -81,7 +77,6 @@ class Client(val address: InetSocketAddress) {
   // this everywhere?
   import ExecutionContext.Implicits.global
   import Client._
-  //import Client.logger._
   
   protected lazy val eventGroup = new NioEventLoopGroup
   
@@ -89,8 +84,8 @@ class Client(val address: InetSocketAddress) {
     new Bootstrap().
     group(eventGroup).
     channel(classOf[NioSocketChannel]).
-    //option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true).
-    //option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, true).
+    option[java.lang.Boolean](ChannelOption.TCP_NODELAY, true).
+    option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, false).
     handler(createInitializer).
     remoteAddress(address)
   }
@@ -104,16 +99,8 @@ class Client(val address: InetSocketAddress) {
   ): ChannelFutureListener = {
     new ChannelFutureListener() {
       override def operationComplete(f: ChannelFuture) = {
-        if (f.isSuccess) {
-          //debug("request succeeded: " + f)
-        } else {
-          //if (f.isCancelled) {
-          //  //debug("request cancelled: " + f)
-          //  responsePromise.failure(new CancellationException())
-          //} else {
-            //debug("request failed: " + f)
-            responsePromise.failure(f.cause)
-          //}
+        if (!f.isSuccess) {
+          responsePromise.failure(f.cause)
         }
       }
     }

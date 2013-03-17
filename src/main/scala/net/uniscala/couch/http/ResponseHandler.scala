@@ -26,7 +26,7 @@ class ResponseHandler(
   
   @volatile private var response: Response = null
   
-  class ChunkHandler extends ChannelInboundMessageHandlerAdapter[HttpContent] {
+  class ChunkDownloader extends ChannelInboundMessageHandlerAdapter[HttpContent] {
     
     override def messageReceived(
       ctx: ChannelHandlerContext,
@@ -50,7 +50,7 @@ class ResponseHandler(
     }
   }
   
-  lazy val chunkHandler = new this.ChunkHandler
+  lazy val chunkDownloader = new this.ChunkDownloader
   
   protected def onContent(ctx: ChannelHandlerContext, buf: ByteBuffer) = {
     assert(response != null, "illegal response state")
@@ -79,28 +79,31 @@ class ResponseHandler(
   ): Unit = {
     assert(this.response == null, "received multiple HTTP responses")
     this.response = new Response(this, msg)
-    val b = promise.success(this.response)
-    msg match {
-      case resp: FullHttpResponse => {
-        val buf = resp.data
-        try {
-          onContent(ctx, buf.nioBuffer)
-          onContentEnd(ctx)
-        } catch {
-          case err: Throwable => {
-            onContentFailure(ctx, err)
+    try {
+      msg match {
+        case resp: FullHttpResponse => {
+          val buf = resp.data
+          try {
+            onContent(ctx, buf.nioBuffer)
+            onContentEnd(ctx)
+          } catch {
+            case err: Throwable => {
+              onContentFailure(ctx, err)
+            }
           }
         }
+        case resp: HttpResponse => { }
       }
-      case resp: HttpResponse => { }
+    } finally {
+      promise.success(this.response)
     }
   }
   
   override def afterAdd(ctx: ChannelHandlerContext) = {
-    ctx.pipeline.addLast(this.chunkHandler)
+    ctx.pipeline.addLast(this.chunkDownloader)
   }
   
   override def beforeRemove(ctx: ChannelHandlerContext) = {
-    ctx.pipeline.remove(this.chunkHandler)
+    ctx.pipeline.remove(this.chunkDownloader)
   }
 }

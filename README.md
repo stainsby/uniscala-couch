@@ -95,7 +95,7 @@ Uniscala Couch releases are available in the mainstream repositories:
 
 in your `pom.xml`, or using SBT, in your `build.sbt`:
 
-    "net.uniscala" %% "uniscala-couch" % "0.3"
+    "net.uniscala" %% "uniscala-couch" % "0.4"
 
 
 ## Building

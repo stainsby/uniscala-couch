@@ -362,7 +362,7 @@ class CouchDatabaseSpec extends Specification {
                       jobj.getAt[JsonString]("_id").get.value,
                       jobj.getAt[JsonString]("_rev").get.value
                     )),
-                    jobj :+ ("locality" -> "Other")
+                    (jobj ++ Json("locality" -> "Other")) : JsonObject
                   )
                 };
                 (docs3 must haveSize(3)) and {

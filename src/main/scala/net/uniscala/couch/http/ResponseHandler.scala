@@ -32,7 +32,6 @@ class ResponseHandler(
       ctx: ChannelHandlerContext,
       chunk: HttpContent
     ) = {
-      //println("got chunk")
       val buf = chunk.data
       try {
         onContent(ctx, buf.nioBuffer)
@@ -43,14 +42,10 @@ class ResponseHandler(
       }
       chunk match {
         case _: LastHttpContent => {
-          //println("  - LAST chunk")
           onContentEnd(ctx)
           ctx.channel.close
         }
-        case _ => {
-          //println("  - WASN'T last chunk")
-          
-        }
+        case _ => { }
       }
     }
   }
@@ -87,7 +82,6 @@ class ResponseHandler(
     val b = promise.success(this.response)
     msg match {
       case resp: FullHttpResponse => {
-        //println("FULL HTTP response")
         val buf = resp.data
         try {
           onContent(ctx, buf.nioBuffer)
@@ -98,9 +92,7 @@ class ResponseHandler(
           }
         }
       }
-      case resp: HttpResponse => {
-        //println("(expecting chunked content)")
-      }
+      case resp: HttpResponse => { }
     }
   }
   

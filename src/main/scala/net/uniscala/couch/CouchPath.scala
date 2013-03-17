@@ -71,7 +71,6 @@ trait CouchPath {
     url: Url
   ): FullHttpRequest = {
     val req = if (isPut) preparePut(url) else preparePost(url)
-    //req.setContent(Unpooled.wrappedBuffer(bytes))
     req.data.writeBytes(Unpooled.wrappedBuffer(bytes))
     req.headers.set(CONTENT_TYPE, BINARY)
     req.headers.set(CONTENT_LENGTH, bytes.size)

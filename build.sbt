@@ -46,8 +46,8 @@ scalacOptions <<= scalaVersion map { v: String =>
 
 libraryDependencies ++= Seq(
   "io.netty" % "netty-codec-http" % "4.0.0.Beta3",
-  "net.uniscala" %% "uniscala-json" % "0.4-SNAPSHOT",
-  "org.specs2" %% "specs2" % "1.13" % "test"
+  "net.uniscala" %% "uniscala-json" % "0.4",
+  "org.specs2" %% "specs2" % "1.14" % "test"
 )
 
 resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"

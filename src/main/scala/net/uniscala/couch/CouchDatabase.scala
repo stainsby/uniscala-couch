@@ -170,19 +170,19 @@ extends CouchSubPath(client, name) with CouchPathContainerOps[CouchDoc] {
     
     import Json._
     
-    val docsEntries: Seq[JsonObject] = docs map { doc =>
+    val docsEntries: Seq[JsonObject] = docs.map { doc =>
       import CouchDoc.Field.{ID, REV}
       doc match {
         case (None, value) => value
-        case (Some(ref: Id), value) => value :+ (ID -> ref.id)
-        case (Some(ref: Rev), value) => value :+ (ID -> ref.id, REV -> ref.rev)
+        case (Some(ref: Id), value) => (value ++ Json(ID -> ref.id)) : JsonObject
+        case (Some(ref: Rev), value) => (value ++ Json(ID -> ref.id, REV -> ref.rev)) : JsonObject
       }
     }
     var docsJson = Json(
       CouchDatabase.Param.DOCS -> Json(docsEntries:_*)
     )
     if (allOrNothing) {
-      docsJson = docsJson :+ (CouchDatabase.BulkDocs.ALL_OR_NOTHING -> true)
+      docsJson = docsJson ++ Json(CouchDatabase.BulkDocs.ALL_OR_NOTHING -> true)
     }
     val data = docsJson.toCompactString.getBytes(UTF_8)
     var req = preparePost(CouchDatabase.Path.BULK_DOCS)

@@ -90,7 +90,7 @@ Uniscala Couch releases are available in the mainstream repositories:
     <dependency>
       <groupId>net.uniscala</groupId>
       <artifactId>uniscala-couch_2.10</artifactId>
-      <version>0.3</version>
+      <version>0.4</version>
     </dependency>
 
 in your `pom.xml`, or using SBT, in your `build.sbt`:
@@ -101,6 +101,13 @@ in your `pom.xml`, or using SBT, in your `build.sbt`:
 ## Building
 
 Uniscala Couch is built in a fairly standard way using SBT.
+
+
+## History
+
+ * **version 0.4**
+   - upgrade from Netty version 4.0.0.Alpha8 to Netty 4.0.0.Beta3
+   - upgrade to Uniscala JSON 0.4
 
 
 ## CouchDB HTTP API Coverage

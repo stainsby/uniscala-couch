@@ -76,7 +76,6 @@ with CouchPath {
   import ExecutionContext.Implicits.global
   import Couch._
   import CouchClient._
-  //import Client.logger
   
   override val parentOption = None
   
@@ -142,40 +141,19 @@ with CouchPath {
       chan.write(stream).addListener(new ChannelFutureListener() {
         
         override def operationComplete(f: ChannelFuture) = {
-          if (f.isSuccess) {
-            //logger.debug("upload succeeded: " + f)
-          } else {
-            //if (f.isCancelled) {
-            //  //logger.debug("upload cancelled: " + f)
-            //  responsePromise.failure(new CancellationException())
-            //} else {
-            //  //logger.debug("upload failed: " + f)
-              responsePromise.failure(f.cause)
-            //}
+          if (!f.isSuccess) {
+            responsePromise.failure(f.cause)
           }
           try {
-            //logger.debug("attempting to close stream ...")
             stream.close
-            //logger.debug("closed stream: " + stream)
-          } catch {
-            case err: Throwable => {} //logger.error("failed to close stream: " + err)
           }
         } 
       })
     }
     chan.write(request).addListener(new ChannelFutureListener() {
       override def operationComplete(f: ChannelFuture) = {
-        if (f.isSuccess) {
-          //logger.debug("request succeeded: " + f)
-          startUpload()
-        } else {
-          //if (f.isCancelled) {
-          //  //logger.debug("request cancelled: " + f)
-          //  responsePromise.failure(new CancellationException())
-          //} else {
-            //logger.debug("request failed: " + f)
-            responsePromise.failure(f.cause)
-          //}
+        if (!f.isSuccess) {
+          responsePromise.failure(f.cause)
         }
       }
     })
@@ -348,21 +326,21 @@ with CouchPath {
     var bodyJson =
       Json(Param.SOURCE -> source, Param.TARGET ->target)
     if (createTarget == true) {
-      bodyJson = bodyJson :+ Param.CREATE_TARGET -> true
+      bodyJson = bodyJson ++ Json(Param.CREATE_TARGET -> true)
     }
     if (continuous) {
-      bodyJson = bodyJson :+ Param.CONTINUOUS -> true
+      bodyJson = bodyJson ++ Json(Param.CONTINUOUS -> true)
     }
     filterOpt foreach { filter =>
-      bodyJson = bodyJson :+ Param.FILTER -> filter.toString
+      bodyJson = bodyJson ++ Json(Param.FILTER -> filter.toString)
     }
     if (!docIds.isEmpty) {
       val jsonDocIds = docIds.map(JsonString(_))
-      bodyJson = bodyJson :+
-        Param.DOC_IDS -> Json(jsonDocIds:_*)
+      bodyJson = bodyJson ++
+        Json(Param.DOC_IDS -> Json(jsonDocIds:_*))
     }
     proxyUrlOpt foreach { proxyUrl =>
-      bodyJson = bodyJson :+ Param.PROXY -> proxyUrl
+      bodyJson = bodyJson ++ Json(Param.PROXY -> proxyUrl)
     }
     fetchJsonObject(preparePost(bodyJson, baseUrl / Path.REPLICATE))
   }
@@ -379,9 +357,9 @@ with CouchPath {
     var bodyJson =
       Json(Param.SOURCE -> source, Param.TARGET ->target)
     if (continuous) {
-      bodyJson = bodyJson :+ Param.CONTINUOUS -> true
+      bodyJson = bodyJson ++ Json(Param.CONTINUOUS -> true)
     }
-    bodyJson = bodyJson :+ Param.CANCEL -> true
+    bodyJson = bodyJson ++ Json(Param.CANCEL -> true)
     fetchJsonObject(preparePost(bodyJson, baseUrl / Path.REPLICATE))
   }
 }

@@ -76,6 +76,7 @@ extends JsonParser(reader) with Iterator[JsonObject] {
     skipWhitespace
     if (currentChar == ']') { // empty results
       atEnd = true
+      try { close }
     }
   }
   
@@ -126,4 +127,6 @@ extends JsonParser(reader) with Iterator[JsonObject] {
       Some(row)
     }
   }
+  
+  def close: Unit = reader.close
 }

@@ -45,7 +45,7 @@ scalacOptions <<= scalaVersion map { v: String =>
 }
 
 libraryDependencies ++= Seq(
-  "io.netty" % "netty-codec-http" % "4.0.0.Beta3",
+  "io.netty" % "netty-codec-http" % "4.0.0.CR1",
   "net.uniscala" %% "uniscala-json" % "0.4",
   "org.specs2" %% "specs2" % "1.14" % "test"
 )

@@ -158,7 +158,7 @@ private[couch] abstract sealed class CouchDocBase private[couch] (
   /**
    * The document as JSON.
    */
-  def jdoc: JsonObject
+  def json: JsonObject
 }
 
 
@@ -171,7 +171,7 @@ case class CouchSimpleDoc private[couch] (
   override val parent: CouchPath,
   override val id: String,
   rev: String,
-  jdoc: JsonObject
+  json: JsonObject
 ) extends CouchDocBase(parent, id)
 with CouchPathSimpleOps[CouchSimpleDoc] {
   
@@ -186,7 +186,7 @@ case class CouchDoc private[couch] (
   override val parent: CouchPath,
   override val id: String,
   rev: String,
-  jdoc: JsonObject
+  json: JsonObject
 ) extends CouchDocBase(parent, id)
 with CouchPathSimpleOps[CouchDoc]
 with CouchPathAttachmentOps[CouchDoc] {

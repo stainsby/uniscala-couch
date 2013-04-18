@@ -58,7 +58,7 @@ class CouchDocSpec extends Specification {
       res0 must beRight and {
         val doc1: CouchDoc = res0.right.get
         val newName: String = "Acme Shop"
-        val newValue = doc1.jdoc.replace(JsonPath.root / "name" -> newName);
+        val newValue = doc1.json.replace(JsonPath.root / "name" -> newName);
         val res = orError(doc1.update(newValue))
         res must beRight and {
           val doc2: CouchDoc = res.right.get
@@ -79,8 +79,8 @@ class CouchDocSpec extends Specification {
       val doc1: CouchDoc = await60(db.get(id)).get
       await60(doc1.update(Json("hover" -> "craft")))
       val doc2: CouchDoc = await60(db.get(id)).get
-      val v1 = doc2.jdoc.getAt[JsonInteger]("aaa").map(_.value)
-      val v2 = doc2.jdoc.getAt[JsonString]("hover").map(_.value)
+      val v1 = doc2.json.getAt[JsonInteger]("aaa").map(_.value)
+      val v2 = doc2.json.getAt[JsonString]("hover").map(_.value)
       (v1 must beNone) and (v2 must beSome("craft"))
     }
   }

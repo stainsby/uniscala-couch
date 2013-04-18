@@ -69,7 +69,7 @@ class CouchDesignSpec extends Specification {
           (updatedDocOpt must beSome) and {
             val updatedDoc = updatedDocOpt.get;
             (updatedDoc.id must beEqualTo("_design/mydesign/2")) and {
-              updatedDoc.jdoc.getAt[JsonString]("meow") must
+              updatedDoc.json.getAt[JsonString]("meow") must
                 beSome(JsonString("fancy"))
             }
           }
@@ -103,7 +103,7 @@ class CouchDesignSpec extends Specification {
           val copiedDocOpt: Option[CouchDoc] = res3.right.get
           (copiedDocOpt must beSome) and {
             val copiedDoc = copiedDocOpt.get;
-            copiedDoc.jdoc.getAt[JsonString]("ice") must
+            copiedDoc.json.getAt[JsonString]("ice") must
               beSome(JsonString("berg"))
           }
         }

@@ -80,7 +80,7 @@ class CouchUpdateSpec extends Specification {
             val rev = revOpt.get
             val doc = await60(db.get(docId)).get
             doc.rev must beEqualTo(rev) and {
-              doc.jdoc.getAt[JsonString]("param1") must
+              doc.json.getAt[JsonString]("param1") must
                 beSome(JsonString("hiccup"))
             }
           }
@@ -101,7 +101,7 @@ class CouchUpdateSpec extends Specification {
             val rev = revOpt.get
             val doc = await60(db.get(docId)).get
             doc.rev must beEqualTo(rev) and {
-              doc.jdoc.getAt[JsonString]("param1") must
+              doc.json.getAt[JsonString]("param1") must
                 beSome(JsonString("fishlegs"))
             }
           }

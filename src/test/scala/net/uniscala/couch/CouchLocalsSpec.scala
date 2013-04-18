@@ -45,10 +45,10 @@ class CouchLocalsSpec extends Specification {
       val localDoc = await60(locals.insert(id, jdoc))
       
       def getField(doc: CouchDocBase, key: String): String =
-        doc.jdoc.getAt[JsonString](key).get.value
+        doc.json.getAt[JsonString](key).get.value
       
       localDoc.id must beEqualTo(fullId) and {
-        localDoc.jdoc must beEqualTo(jdoc) and {
+        localDoc.json must beEqualTo(jdoc) and {
           val localDocViaGet = await60(locals.get(id)).get
           localDocViaGet.id must beEqualTo(fullId) and {
             getField(localDocViaGet, "foo") must beEqualTo("bar") and {

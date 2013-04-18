@@ -39,7 +39,7 @@ class CouchDesignsSpec extends Specification {
       (res1 must beRight) and {
         val doc: CouchDoc = res1.right.get
         doc.id must beEqualTo("_design/mydesign") and {
-          doc.jdoc must beEqualTo(ddoc)
+          doc.json must beEqualTo(ddoc)
         }
       }
     }

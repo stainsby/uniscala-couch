@@ -128,7 +128,7 @@ class Client(val address: InetSocketAddress) {
    * should be attempted on this, or any derived CouchPath instances, after
    * calling this method.
    */
-  def shutdown(): Unit = bootstrap.shutdown()
+  def shutdown(): Unit = eventGroup.shutdownGracefully()
   
   
   // convenience methods based on 'send' with content handlers

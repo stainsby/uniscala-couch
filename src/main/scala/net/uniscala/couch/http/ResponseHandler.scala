@@ -32,7 +32,7 @@ class ResponseHandler(
       ctx: ChannelHandlerContext,
       chunk: HttpContent
     ) = {
-      val buf = chunk.data
+      val buf = chunk.content
       try {
         onContent(ctx, buf.nioBuffer)
       } catch {
@@ -82,7 +82,7 @@ class ResponseHandler(
     try {
       msg match {
         case resp: FullHttpResponse => {
-          val buf = resp.data
+          val buf = resp.content
           try {
             onContent(ctx, buf.nioBuffer)
             onContentEnd(ctx)
@@ -99,11 +99,11 @@ class ResponseHandler(
     }
   }
   
-  override def afterAdd(ctx: ChannelHandlerContext) = {
+  override def handlerAdded(ctx: ChannelHandlerContext) = {
     ctx.pipeline.addLast(this.chunkDownloader)
   }
   
-  override def beforeRemove(ctx: ChannelHandlerContext) = {
-    ctx.pipeline.remove(this.chunkDownloader)
-  }
+  //override def beforeRemove(ctx: ChannelHandlerContext) = {
+  //  ctx.pipeline.remove(this.chunkDownloader)
+  //}
 }

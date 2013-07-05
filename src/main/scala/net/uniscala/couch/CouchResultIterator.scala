@@ -15,7 +15,7 @@ import scala.concurrent.{ExecutionContext, Future}
 
 import java.io.Reader
 
-import io.netty.handler.codec.http.HttpRequest
+import io.netty.handler.codec.http.FullHttpRequest
 
 import net.uniscala.json._
 
@@ -29,7 +29,7 @@ private[couch] object CouchResultIterator {
   
   private[couch] def apply(
     client: CouchClient,
-    req: HttpRequest,
+    req: FullHttpRequest,
     resultsKey: String = Field.ROWS
   ): Future[CouchResultIterator] = {
     client.send(req) flatMap {

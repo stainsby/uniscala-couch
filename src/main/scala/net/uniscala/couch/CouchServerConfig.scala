@@ -12,7 +12,7 @@ package net.uniscala.couch
 
 import scala.concurrent.Future
 
-import io.netty.handler.codec.http.HttpRequest
+import io.netty.handler.codec.http.FullHttpRequest
 
 import net.uniscala.json._
 
@@ -36,7 +36,7 @@ extends CouchSubPath(couch, CouchServerConfig.Path.CONFIG) {
   import CouchServerConfig._
   import Couch._
     
-  private def handleConfigResponse(req: HttpRequest) = {
+  private def handleConfigResponse(req: FullHttpRequest) = {
     client.send(req) map { resp =>
       val statusCode = resp.statusCode 
       if (statusCode / 100 == 4) {

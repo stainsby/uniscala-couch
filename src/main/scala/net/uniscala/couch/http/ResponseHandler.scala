@@ -15,95 +15,76 @@ import scala.concurrent.Promise
 import java.nio.ByteBuffer
 
 import io.netty.channel.{
-  ChannelInboundMessageHandlerAdapter, ChannelHandlerContext
+  ChannelInboundHandlerAdapter, ChannelHandlerContext, MessageList
 }
 import io.netty.handler.codec.http._
 
 
 class ResponseHandler(
-  promise: Promise[Response]
-) extends ChannelInboundMessageHandlerAdapter[HttpResponse] {
+  val promise: Promise[Response]
+) extends ChannelInboundHandlerAdapter {
   
   @volatile private var response: Response = null
   
-  class ChunkDownloader extends ChannelInboundMessageHandlerAdapter[HttpContent] {
-    
-    override def messageReceived(
-      ctx: ChannelHandlerContext,
-      chunk: HttpContent
-    ) = {
-      val buf = chunk.content
-      try {
-        onContent(ctx, buf.nioBuffer)
-      } catch {
-        case err: Throwable => {
-          onContentFailure(ctx, err)
-        }
-      }
-      chunk match {
-        case _: LastHttpContent => {
-          onContentEnd(ctx)
-          ctx.channel.close
-        }
-        case _ => { }
-      }
-    }
-  }
-  
-  lazy val chunkDownloader = new this.ChunkDownloader
-  
   protected def onContent(ctx: ChannelHandlerContext, buf: ByteBuffer) = {
-    assert(response != null, "illegal response state")
+    assertProtocol(response != null, "illegal response state")
     response.appendContent(buf)
   }
   
   protected def onContentEnd(ctx: ChannelHandlerContext) = {
-    
-    assert(this.response != null, "illegal response state")
-    
-    try {
-      this.response.contentPipe.sink.close
-    }
-    
-    try {
-      ctx.channel.close
-    }
+    assertProtocol(this.response != null, "illegal response state")
+    promise.success(this.response)
+    try { this.response.contentPipe.sink.close }
+    try { ctx.channel.close }
   }
   
-  protected def onContentFailure(ctx: ChannelHandlerContext, err: Throwable): Unit =
+  protected def onContentFailure(
+    ctx: ChannelHandlerContext,
+    err: Throwable
+   ): Unit = {
+    this.promise.failure(err)
     this.response.content.failure(err)
+  }
   
   override def messageReceived(
     ctx: ChannelHandlerContext,
-    msg: HttpResponse
+    msgs: MessageList[java.lang.Object]
   ): Unit = {
-    assert(this.response == null, "received multiple HTTP responses")
-    this.response = new Response(this, msg)
+    import scala.collection.JavaConversions.iterableAsScalaIterable
     try {
-      msg match {
-        case resp: FullHttpResponse => {
-          val buf = resp.content
-          try {
-            onContent(ctx, buf.nioBuffer)
-            onContentEnd(ctx)
-          } catch {
-            case err: Throwable => {
-              onContentFailure(ctx, err)
+      msgs.foreach { msg =>
+        msg match {
+          case resp: HttpResponse => {
+            assertProtocol(this.response == null, "multiple responses")
+            this.response = new Response(this, resp)
+            resp match {
+              case _: FullHttpResponse => onContentEnd(ctx)
+              case _ => { }
             }
           }
+          case chunk: HttpContent => {
+            onContent(ctx, chunk.content.nioBuffer)
+            chunk match {
+              case _: LastHttpContent => onContentEnd(ctx)
+              case _ => { }
+            }
+          }
+          case other => {
+            assertProtocol(false, "unhandled message: " + other.getClass)
+          }
         }
-        case resp: HttpResponse => { }
+      }
+    } catch {
+      case err: Throwable => {
+        err.printStackTrace // TODO
+        onContentFailure(ctx, err)
       }
     } finally {
-      promise.success(this.response)
+      msgs.releaseAllAndRecycle
     }
   }
   
-  override def handlerAdded(ctx: ChannelHandlerContext) = {
-    ctx.pipeline.addLast(this.chunkDownloader)
+  protected def assertProtocol(predicate: Boolean, msg: String) {
+    if (!predicate) throw new ProtocolException(msg)
   }
-  
-  //override def beforeRemove(ctx: ChannelHandlerContext) = {
-  //  ctx.pipeline.remove(this.chunkDownloader)
-  //}
 }

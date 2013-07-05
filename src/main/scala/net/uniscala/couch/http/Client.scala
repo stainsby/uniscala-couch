@@ -28,7 +28,6 @@ import net.uniscala.couch.util.Http.Header.CONTENT_LENGTH
 
 object Client {
   
-  private val HTTP11 = new HttpVersion("HTTP", 1, 1, true)
   private val COPY = new HttpMethod("COPY")
   
   def apply(host: String = "localhost", port: Int = 80) =
@@ -41,7 +40,7 @@ object Client {
   ): FullHttpRequest = {
     assert(path != null, "null path")
     assert(method != null, "null method")
-    val req = new DefaultFullHttpRequest(HTTP11, method, path)
+    val req = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, method, path)
     contentLengthOpt foreach { len: Long => 
       req.headers.add(CONTENT_LENGTH, len)
     }
@@ -64,7 +63,7 @@ object Client {
     newRequest(path, HttpMethod.HEAD)
   
   def prepareCopy(path: String): FullHttpRequest =
-    newRequest(path, new HttpMethod("COPY"))  
+    newRequest(path, COPY)
 }
 
 
@@ -109,7 +108,7 @@ class Client(val address: InetSocketAddress) {
   /**
    * Send a simple (non-streaming) HTTP request.
    */
-  def send(request: HttpRequest): Future[Response] = {
+  def send(request: FullHttpRequest): Future[Response] = {
     assert(request != null, "null request")
     val responsePromise = Promise[Response]()
     val chan = newChannel
@@ -118,7 +117,7 @@ class Client(val address: InetSocketAddress) {
       new ResponseHandler(responsePromise)
     )
     val channelFuture = chan.write(request)
-    chan.flush()
+    chan.write()
     channelFuture.addListener(newChannelListener(responsePromise))
     responsePromise.future
   }
@@ -137,33 +136,33 @@ class Client(val address: InetSocketAddress) {
   /**
    * Send a simple HTTP request and convert the response to text.
    */
-  def text(request: HttpRequest): Future[String] =
+  def text(request: FullHttpRequest): Future[String] =
     send(request).flatMap(_.text)
   
   /**
    * Send a simple HTTP request and convert the response to bytes.
    */
-  def bytes(request: HttpRequest): Future[Array[Byte]] =
+  def bytes(request: FullHttpRequest): Future[Array[Byte]] =
     send(request).flatMap(_.bytes)
   
   /**
    * Send a simple HTTP request and process the response with the the
    * supplied handler.
    */
-  def readText[T](request: HttpRequest, handler: Reader => T): Future[T] =
+  def readText[T](request: FullHttpRequest, handler: Reader => T): Future[T] =
     send(request).flatMap(_.readText(handler))
   
   /**
    * Send a simple HTTP request and process the response with the the
    * supplied handler.
    */
-  def readSource[T](request: HttpRequest, handler: Source => T): Future[T] =
+  def readSource[T](request: FullHttpRequest, handler: Source => T): Future[T] =
     send(request).flatMap(_.readSource(handler))
   
   /**
    * Send a simple HTTP request and process the response with the the
    * supplied handler.
    */
-  def readStream[T](request: HttpRequest, handler: InputStream => T): Future[T] =
+  def readStream[T](request: FullHttpRequest, handler: InputStream => T): Future[T] =
     send(request).flatMap(_.readStream(handler))
 }

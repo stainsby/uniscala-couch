@@ -18,7 +18,7 @@ import java.nio.channels.ReadableByteChannel
 import java.util.concurrent.CancellationException
 
 import io.netty.channel.{ChannelFuture, ChannelFutureListener}
-import io.netty.handler.codec.http.{HttpMethod, HttpRequest}
+import io.netty.handler.codec.http.{FullHttpRequest, HttpMethod, HttpRequest}
 import io.netty.handler.stream._
 
 import net.uniscala.json._
@@ -70,8 +70,13 @@ class CouchClient(
   val host: String = "localhost",
   val port: Int = 5984,
   credentialsOption: Option[Credentials] = None
-) extends Client(new InetSocketAddress(host, port))
-with CouchPath {
+) extends Client(new InetSocketAddress(host, port)) with CouchPath {
+  
+  def this(
+    host: String,
+    port: Int,
+    credentials: Credentials
+  ) = this(host, port, Some(credentials))
   
   import ExecutionContext.Implicits.global
   import Couch._
@@ -116,7 +121,7 @@ with CouchPath {
    * Sends a non-streaming request. The 'addDefaultHeaders' method is
    * applied to the request first.
    */
-  override def send(request: HttpRequest) = {
+  override def send(request: FullHttpRequest) = {
     addDefaultHeaders(request)
     super.send(request)
   }
@@ -156,7 +161,7 @@ with CouchPath {
         }
       } 
     })
-    chan.flush()
+    chan.write()
     fut
   }
   

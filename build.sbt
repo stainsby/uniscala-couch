@@ -36,7 +36,7 @@ pomExtra := (
   </developers>
 )
 
-scalaVersion := "2.10.1"
+scalaVersion := "2.10.2"
 
 scalacOptions <<= scalaVersion map { v: String =>
   val default = "-deprecation" :: "-unchecked" :: Nil
@@ -45,7 +45,7 @@ scalacOptions <<= scalaVersion map { v: String =>
 }
 
 libraryDependencies ++= Seq(
-  "io.netty" % "netty-codec-http" % "4.0.0.CR2",
+  "io.netty" % "netty-codec-http" % "4.0.0.CR9",
   "net.uniscala" %% "uniscala-json" % "0.4",
   "org.specs2" %% "specs2" % "1.14" % "test"
 )

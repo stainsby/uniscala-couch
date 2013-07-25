@@ -17,6 +17,7 @@ import java.net.InetSocketAddress
 import java.nio.channels.ReadableByteChannel
 import java.util.concurrent.CancellationException
 
+import io.netty.buffer.ByteBuf
 import io.netty.channel.{ChannelFuture, ChannelFutureListener}
 import io.netty.handler.codec.http.{FullHttpRequest, HttpMethod, HttpRequest}
 import io.netty.handler.stream._
@@ -128,7 +129,7 @@ class CouchClient(
   
   private def upload0(
     request: HttpRequest,
-    stream: ChunkedByteInput,
+    stream: ChunkedInput[ByteBuf],
     contentType: Mime
   ): Future[Response] = {
     
@@ -161,7 +162,7 @@ class CouchClient(
         }
       } 
     })
-    chan.write()
+    chan.flush()
     fut
   }
   

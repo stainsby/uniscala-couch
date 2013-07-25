@@ -14,9 +14,7 @@ import scala.concurrent.Promise
 
 import java.nio.ByteBuffer
 
-import io.netty.channel.{
-  ChannelInboundHandlerAdapter, ChannelHandlerContext, MessageList
-}
+import io.netty.channel.{ChannelInboundHandlerAdapter, ChannelHandlerContext}
 import io.netty.handler.codec.http._
 
 
@@ -46,32 +44,30 @@ class ResponseHandler(
     this.response.content.failure(err)
   }
   
-  override def messageReceived(
+  override def channelRead(
     ctx: ChannelHandlerContext,
-    msgs: MessageList[java.lang.Object]
+    msg: java.lang.Object
   ): Unit = {
     import scala.collection.JavaConversions.iterableAsScalaIterable
     try {
-      msgs.foreach { msg =>
-        msg match {
-          case resp: HttpResponse => {
-            assertProtocol(this.response == null, "multiple responses")
-            this.response = new Response(this, resp)
-            resp match {
-              case _: FullHttpResponse => onContentEnd(ctx)
-              case _ => { }
-            }
+      msg match {
+        case resp: HttpResponse => {
+          assertProtocol(this.response == null, "multiple responses")
+          this.response = new Response(this, resp)
+          resp match {
+            case _: FullHttpResponse => onContentEnd(ctx)
+            case _ => { }
           }
-          case chunk: HttpContent => {
-            onContent(ctx, chunk.content.nioBuffer)
-            chunk match {
-              case _: LastHttpContent => onContentEnd(ctx)
-              case _ => { }
-            }
+        }
+        case chunk: HttpContent => {
+          onContent(ctx, chunk.content.nioBuffer)
+          chunk match {
+            case _: LastHttpContent => onContentEnd(ctx)
+            case _ => { }
           }
-          case other => {
-            assertProtocol(false, "unhandled message: " + other.getClass)
-          }
+        }
+        case other => {
+          assertProtocol(false, "unhandled message: " + other.getClass)
         }
       }
     } catch {
@@ -79,8 +75,6 @@ class ResponseHandler(
         err.printStackTrace // TODO
         onContentFailure(ctx, err)
       }
-    } finally {
-      msgs.releaseAllAndRecycle
     }
   }
   

@@ -117,8 +117,8 @@ class Client(val address: InetSocketAddress) {
       new ResponseHandler(responsePromise)
     )
     val channelFuture = chan.write(request)
-    chan.write()
     channelFuture.addListener(newChannelListener(responsePromise))
+    chan.flush()
     responsePromise.future
   }
   

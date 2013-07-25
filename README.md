@@ -48,11 +48,6 @@ The driver is tested and stable, but yet to be used in any non-trivial
 projects. It's possible that the API may change considerably once we start 
 using it in earnest.
 
-Note that our driver project is using Netty 4 (https://netty.io/), which is version 
-4.0.0 alpha 8 at this time, but due to be beta in the next release. That said, 
-we haven't encountered any problems with it so far. I have heard there is a 
-problem ith uploads of more than 2GB that is fixed in Netty trunk.
-
 
 ## License
 
